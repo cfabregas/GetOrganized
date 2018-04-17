@@ -1,4 +1,10 @@
-/**app.wxss**/
+page {
+  background-color: #fff;
+  font-size: 34rpx;
+  font-family: -apple-system-font, Helvetica Neue, Helvetica, sans-serif;
+  height: 100%;
+  color: #1a1a1a;
+}
 .container {
   height: 100%;
   display: flex;
@@ -8,7 +14,8 @@
   padding: 200rpx 0;
   background-color: #fff;
   box-sizing: border-box;
-} 
+}
+
 .dark {
   color: #082947;
 }
@@ -20,4 +27,17 @@
 }
 .blue {
   color: #6DA8D6;
+}
+
+.ellipsis {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.ellipsis-2 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
 }

@@ -1,4 +1,26 @@
-const formatTime = date => {
+// 深拷贝
+function clone () {
+  let type = Object.prototype.toString.call(val).slice(8, -1).toLowerCase()
+
+  if (type === 'array') {
+    var arr = []
+    for (var i in val) {
+      arr[i] = clone(val[i])
+    }
+    return arr
+  } else if (type === 'object') {
+    var obj = {}
+    for (i in val) {
+      if (val.hasOwnProperty(i)) {
+        obj[i] = clone(val[i])
+      }
+    }
+    return obj
+  }
+  return val
+}
+
+function formatTime (date) {
   const year = date.getFullYear()
   const month = date.getMonth() + 1
   const day = date.getDate()
@@ -9,11 +31,13 @@ const formatTime = date => {
   return [year, month, day].map(formatNumber).join('/') + ' ' + [hour, minute, second].map(formatNumber).join(':')
 }
 
-const formatNumber = n => {
-  n = n.toString()
-  return n[1] ? n : '0' + n
+function formatNumber (num) {
+  num = num.toString()
+  return num[1] ? num : '0' + num
 }
 
 module.exports = {
-  formatTime: formatTime
+  clone,
+  formatTime,
+  formatNumber
 }

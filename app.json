@@ -1,13 +1,39 @@
 {
   "pages":[
     "pages/index/index",
-    "pages/logs/logs"
+    "pages/total/total",
+    "pages/setting/setting"
   ],
   "window":{
-    "backgroundColor": "#eee",
+    "backgroundColor": "#fff",
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#FF6E1D",
-    "navigationBarTitleText": "WeChat",
+    "navigationBarTitleText": "Get Organized",
     "navigationBarTextStyle":"white"
+  },
+  "tabBar": {
+    "selectedColor": "#FF6E1D",
+    "backgroundColor": "#fff",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "",
+        "selectedIconPath": "",
+        "text": "项目"
+      },
+      {
+        "pagePath": "pages/total/total",
+        "iconPath": "",
+        "selectedIconPath": "",
+        "text": "统计"
+      },
+      {
+        "pagePath": "pages/setting/setting",
+        "iconPath": "",
+        "selectedIconPath": "",
+        "text": "设置"
+      }
+    ]
   }
 }
