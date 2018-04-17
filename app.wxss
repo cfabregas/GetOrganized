@@ -1,0 +1,23 @@
+/**app.wxss**/
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 200rpx 0;
+  background-color: #fff;
+  box-sizing: border-box;
+} 
+.dark {
+  color: #082947;
+}
+.orange {
+  color: #FF6E1D;
+}
+.green {
+  color: #98D9D5;
+}
+.blue {
+  color: #6DA8D6;
+}
