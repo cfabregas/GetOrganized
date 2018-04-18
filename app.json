@@ -1,7 +1,7 @@
 {
   "pages":[
     "pages/index/index",
-    "pages/total/total",
+    "pages/statics/statics",
     "pages/setting/setting"
   ],
   "window":{
@@ -12,26 +12,27 @@
     "navigationBarTextStyle":"white"
   },
   "tabBar": {
-    "selectedColor": "#FF6E1D",
+    "color": "#888",
+    "selectedColor": "#353535",
     "backgroundColor": "#fff",
     "borderStyle": "black",
     "list": [
       {
         "pagePath": "pages/index/index",
-        "iconPath": "assets/index.png",
-        "selectedIconPath": "assets/index.png",
+        "iconPath": "assets/tab/index.png",
+        "selectedIconPath": "assets/tab/index_active.png",
         "text": "项目"
       },
       {
-        "pagePath": "pages/total/total",
-        "iconPath": "assets/index.png",
-        "selectedIconPath": "assets/index.png",
+        "pagePath": "pages/statics/statics",
+        "iconPath": "assets/tab/statics.png",
+        "selectedIconPath": "assets/tab/statics_active.png",
         "text": "统计"
       },
       {
         "pagePath": "pages/setting/setting",
-        "iconPath": "assets/index.png",
-        "selectedIconPath": "assets/index.png",
+        "iconPath": "assets/tab/setting.png",
+        "selectedIconPath": "assets/tab/setting_active.png",
         "text": "设置"
       }
     ]
