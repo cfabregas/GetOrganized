@@ -18,20 +18,20 @@
     "list": [
       {
         "pagePath": "pages/index/index",
-        "iconPath": "",
-        "selectedIconPath": "",
+        "iconPath": "assets/index.png",
+        "selectedIconPath": "assets/index.png",
         "text": "项目"
       },
       {
         "pagePath": "pages/total/total",
-        "iconPath": "",
-        "selectedIconPath": "",
+        "iconPath": "assets/index.png",
+        "selectedIconPath": "assets/index.png",
         "text": "统计"
       },
       {
         "pagePath": "pages/setting/setting",
-        "iconPath": "",
-        "selectedIconPath": "",
+        "iconPath": "assets/index.png",
+        "selectedIconPath": "assets/index.png",
         "text": "设置"
       }
     ]

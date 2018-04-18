@@ -1,9 +1,10 @@
-import service from 'libs/service'
+import BaaS from 'libs/BaaS'
+import store from 'libs/store'
 
 App({
   onLaunch: function () {
     // 启动BaaS服务
-    service.initBaaS()
+    BaaS.initBaaS()
 
     // 登录
     wx.BaaS.login().then(res => {
@@ -28,7 +29,5 @@ App({
       }
     })
   },
-  globalData: {
-    userInfo: null
-  }
+  globalData: store
 })

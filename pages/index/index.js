@@ -1,4 +1,4 @@
-import service from '../../libs/service'
+import request from '../../libs/request'
 const app = getApp()
 
 Page({
@@ -30,8 +30,26 @@ Page({
     })
   },
   save () {
-    service.setName({
-      name: 'test' + Math.random().toFixed(5)
+    request.findData({
+      tableName: 'names',
+      query: {
+        type: 'or',
+        option: [{
+          method: 'contains',
+          params: ['name', 'test']
+        }, {
+          method: 'contains',
+          params: ['name', 'df']
+        }]
+      },
+      callback: {
+        then: res => {
+          console.log('callback', res)
+        },
+        catch: err => {
+          console.log('callback', err)
+        }
+      }
     })
   }
 })
