@@ -5,6 +5,6 @@ Page({
     title: 'setting'
   },
   onLoad () {
-
+    // todo：加载统计数据
   }
 })
