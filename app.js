@@ -1,5 +1,7 @@
-import BaaS from 'libs/BaaS'
-import store from 'libs/store'
+import BaaS from 'libs/BaaS' // 知晓云的BaaS服务
+import store from 'libs/store' // 底层公共数据
+import request from 'libs/request' // 请求数据的方法集合
+import commit from 'libs/commit' // 显式地改变底层数据的方法集合，与request一一对应
 
 App({
   onLaunch () {
@@ -18,7 +20,7 @@ App({
     // 获取用户信息
     wx.getUserInfo({
       success: res => {
-        this.globalData.userInfo = res.userInfo
+        this.store.userInfo = res.userInfo
       }
     })
 
@@ -26,5 +28,7 @@ App({
   },
   onShow () {},
   onHide () {},
-  globalData: store
+  store: store,
+  request: request,
+  commit: commit
 })

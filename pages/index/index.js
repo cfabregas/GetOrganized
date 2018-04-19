@@ -1,4 +1,3 @@
-import request from '../../libs/request'
 const app = getApp()
 
 Page({
@@ -9,7 +8,7 @@ Page({
 
   },
   save () {
-    request.findData({
+    app.request.findData({
       tableName: 'names',
       query: {
         type: 'or',

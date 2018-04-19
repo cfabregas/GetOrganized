@@ -36,7 +36,7 @@ function formatNumber (num) {
   return num[1] ? num : '0' + num
 }
 
-module.exports = {
+export {
   clone,
   formatTime,
   formatNumber
