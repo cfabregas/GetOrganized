@@ -1,25 +1,24 @@
 import store from 'store'
 
 // 通过查询参数(可选)批量获取相关数据，参数由各页面自行配置，规则见链接：
-// https://doc.minapp.com/js-sdk/schema/query.html
 function findData ({
   tableName,
   query,
   limit = 20,
-  offset = store[tableName].length, // 默认本地已有数据来计算偏移量
+  offset = store[tableName].length, // 默认根据本地已有数据来计算偏移量
   orderBy = 'created_at', // 默认按创建时间排序
   callback = {}
 }) {
 
   /*
-    指定的query格式：
-    query: {
-      type: 'and' || 'or',
-      option: [{
-        method: 'compare',
-        params: ['price', '<', 1]
-      }]
-    }
+    指定的query格式，更多查询方法见 https://doc.minapp.com/js-sdk/schema/query.html
+      query: {
+        type: 'and' || 'or',
+        option: [{
+          method: 'compare',
+          params: ['price', '<', 1]
+        }]
+      }
    */
 
   let table = new wx.BaaS.TableObject(tableName)
