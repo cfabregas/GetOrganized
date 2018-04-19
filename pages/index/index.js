@@ -8,26 +8,40 @@ Page({
 
   },
   save () {
-    app.request.findData({
-      tableName: 'names',
-      query: {
-        type: 'or',
-        option: [{
-          method: 'contains',
-          params: ['name', 'test']
-        }, {
-          method: 'contains',
-          params: ['name', 'df']
-        }]
-      },
-      callback: {
-        then: res => {
-          console.log('callback', res)
+    const tableName = 'names'
+
+    if (app.store[tableName].hasNext) {
+      wx.showLoading({ title: '加载中...' })
+
+      app.request.findData({
+        tableName: tableName,
+        query: {
+          type: 'or',
+          option: [{
+            method: 'contains',
+            params: ['name', 'test']
+          }, {
+            method: 'contains',
+            params: ['name', 'df']
+          }]
         },
-        catch: err => {
-          console.log('callback', err)
+        callback: {
+          then: res => {
+            wx.hideLoading()
+            wx.showToast({
+              title: '获取成功',
+              icon: 'success'
+            })
+          },
+          catch: err => {
+            wx.hideLoading()
+            wx.showToast({
+              title: err,
+              icon: ''
+            })
+          }
         }
-      }
-    })
+      })
+    }
   }
 })

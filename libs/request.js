@@ -44,6 +44,8 @@ function findData ({
       console.log(`find ${tableName} error`, err)
       callback.catch(err)
     })
+  } else {
+    callback.catch('已全部加载完成')
   }
 }
 

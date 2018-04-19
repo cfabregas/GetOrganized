@@ -4,18 +4,9 @@ page {
   height: 100%;
   color: #1a1a1a;
 }
-
-.dark {
-  color: #082947;
-}
-.orange {
-  color: #FF6E1D;
-}
-.green {
-  color: #98D9D5;
-}
-.blue {
-  color: #6DA8D6;
+view {
+  text-align: center;
+  padding: 20rpx
 }
 
 .ellipsis {
@@ -29,4 +20,21 @@ page {
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
+}
+
+/* 微信设计规范统一色号 */
+.dark {
+  color: #353535;
+}
+.light {
+  color: #888888;
+}
+.red {
+  color: #e64340;
+}
+.green {
+  color: #09bb07;
+}
+.blue {
+  color: #576b95;
 }
