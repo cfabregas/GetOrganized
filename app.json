@@ -7,7 +7,7 @@
   "window":{
     "backgroundColor": "#fff",
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#FF6E1D",
+    "navigationBarBackgroundColor": "#353535",
     "navigationBarTitleText": "Get Organized",
     "navigationBarTextStyle":"white"
   },
