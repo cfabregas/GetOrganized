@@ -1,13 +1,13 @@
-import store from 'store'
+import Store from 'store'
 
 function __resetData (tableName) {
-  store[tableName].total = 0
-  store[tableName].hasNext = true
-  store[tableName].lastQuery = null
-  store[tableName].list = []
-  store[tableName].dict = {}
+  Store[tableName].total = 0
+  Store[tableName].hasNext = true
+  Store[tableName].lastQuery = null
+  Store[tableName].list = []
+  Store[tableName].dict = {}
 
-  console.log(`${tableName} reseted`, store[tableName])
+  console.log(`${tableName} reseted`, Store[tableName])
 }
 
 function _findData (tableName, query, data) {
@@ -15,16 +15,16 @@ function _findData (tableName, query, data) {
     __resetData(tableName)
   }
 
-  store[tableName].total = data.meta.total_count
-  store[tableName].hasNext = !!data.meta.next
-  store[tableName].lastQuery = query
+  Store[tableName].total = data.meta.total_count
+  Store[tableName].hasNext = !!data.meta.next
+  Store[tableName].lastQuery = query
 
   for (let item of data.objects) {
-    store[tableName].list.push(item)
-    store[tableName].dict[item.id] = item
+    Store[tableName].list.push(item)
+    Store[tableName].dict[item.id] = item
   }
 
-  console.log(`${tableName} committed`, store[tableName])
+  console.log(`${tableName} committed`, Store[tableName])
 }
 
 export default {

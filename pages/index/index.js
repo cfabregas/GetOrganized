@@ -10,7 +10,7 @@ Page({
   save () {
     const tableName = 'names'
 
-    if (app.store[tableName].hasNext) {
+    if (app.Store[tableName].hasNext) {
       wx.showLoading({ title: '加载中...' })
 
       app.request.findData({

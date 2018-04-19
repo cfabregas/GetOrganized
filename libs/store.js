@@ -1,4 +1,4 @@
-let store = {
+let Store = {
   userInfo: null,
   names: {
     total: 0,
@@ -9,4 +9,4 @@ let store = {
   }
 }
 
-export default store
+export default Store

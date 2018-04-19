@@ -1,4 +1,5 @@
-import util from '../../utils/util.js'
+import util from '../../utils/util'
+const app = getApp()
 
 Page({
   data: {
