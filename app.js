@@ -9,18 +9,21 @@ App({
     BaaS.initBaaS()
 
     // 登录
-    wx.BaaS.login().then(res => {
-      // 用户允许授权，res 包含用户完整信息，详见下方描述
-      console.log('access', res)
-    }, res => {
-      // 用户拒绝授权，res 包含基本用户信息：id、openid、unionid
-      console.log('reject', res)
-    })
-
-    // 获取用户信息
-    wx.getUserInfo({
-      success: res => {
-        this.Store.userInfo = res.userInfo
+    BaaS.login({
+      then: function(res) {
+        Store.userInfo = res
+      },
+      catch: function(err) {
+        wx.showModal({
+          title: '提示',
+          content: '网络错误，是否重试？',
+          confirmText: '重试',
+          success: res => {
+            if (res.confirm) {
+              BaaS.login(this) // 此时的this对象为callback自身
+            }
+          }
+        })
       }
     })
 

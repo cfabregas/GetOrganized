@@ -2,13 +2,9 @@
 
 page {
   background-color: #fff;
-  font-size: 34rpx;
+  font-size: 17px;
   height: 100%;
   color: #1a1a1a;
-}
-view {
-  text-align: center;
-  padding: 20rpx
 }
 
 .ellipsis {

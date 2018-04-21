@@ -11,7 +11,10 @@ Page({
     const tableName = 'names'
 
     if (app.Store[tableName].hasNext) {
-      wx.showLoading({ title: '加载中...' })
+      wx.showLoading({
+        title: '加载中...',
+        mask: true
+      })
 
       app.request.findData({
         tableName: tableName,
@@ -37,7 +40,7 @@ Page({
             wx.hideLoading()
             wx.showToast({
               title: err,
-              icon: ''
+              icon: 'none'
             })
           }
         }

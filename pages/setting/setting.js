@@ -3,9 +3,17 @@ const app = getApp()
 
 Page({
   data: {
-    title: 'setting'
+    avatar: '../../assets/avatar.png',
+    name: '暂未登录',
+    desc: ''
   },
-  onLoad () {
-    // todo：加载统计数据
+  onReady () {
+    const user = app.Store.userInfo
+    if (user.avatarUrl) {
+      this.setData({
+        avatar: user.avatarUrl,
+        name: user.nickName
+      })
+    }
   }
 })
