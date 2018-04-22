@@ -1,3 +1,3 @@
-<view class="" bind:tap="save">
+<view class="" bind:tap="update">
 index
 </view>

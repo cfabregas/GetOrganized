@@ -36,8 +36,21 @@ function formatNumber (num) {
   return num[1] ? num : '0' + num
 }
 
+const loading = {
+  show: title => {
+    wx.showLoading({
+      title: title,
+      mask: true
+    })
+  },
+  hide: () => {
+    wx.hideLoading()
+  }
+}
+
 export {
   clone,
   formatTime,
-  formatNumber
+  formatNumber,
+  loading
 }

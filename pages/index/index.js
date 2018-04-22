@@ -11,11 +11,6 @@ Page({
     const tableName = 'names'
 
     if (app.Store[tableName].hasNext) {
-      wx.showLoading({
-        title: '加载中...',
-        mask: true
-      })
-
       app.request.findData({
         tableName: tableName,
         query: {
@@ -30,14 +25,12 @@ Page({
         },
         callback: {
           then: res => {
-            wx.hideLoading()
             wx.showToast({
               title: '获取成功',
               icon: 'success'
             })
           },
           catch: err => {
-            wx.hideLoading()
             wx.showToast({
               title: err,
               icon: 'none'
@@ -46,5 +39,12 @@ Page({
         }
       })
     }
+  },
+  update () {
+    app.BaaS.updateUserInfo({
+      key: 'first',
+      value: 'ffff',
+      callback: {}
+    })
   }
 })

@@ -12,25 +12,43 @@ App({
     BaaS.login({
       then: function(res) {
         Store.userInfo = res
-      },
-      catch: function(err) {
-        wx.showModal({
-          title: '提示',
-          content: '网络错误，是否重试？',
-          confirmText: '重试',
-          success: res => {
-            if (res.confirm) {
-              BaaS.login(this) // 此时的this对象为callback自身
+
+        // 加载用户基本信息
+        BaaS.getUserInfo({
+          userId: res.id,
+          callback: {
+            then: data => {
+              Object.assign(Store.userInfo, data)
+            },
+            catch: err => {
+              showModal(this) // 此时的this对象依然是login函数的callback
             }
           }
         })
+
+        // todo：加载任务列表
+      },
+      catch: function(err) {
+        showModal(this)
       }
     })
 
-    // todo：加载基础数据：用户信息、任务列表
+    function showModal(callback) {
+      wx.showModal({
+        title: '提示',
+        content: '网络错误，是否重试？',
+        confirmText: '重试',
+        success: res => {
+          if (res.confirm) {
+            BaaS.login(callback)
+          }
+        }
+      })
+    }
   },
   onShow () {},
   onHide () {},
+  BaaS: BaaS,
   Store: Store,
   request: request,
   commit: commit

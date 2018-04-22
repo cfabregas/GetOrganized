@@ -1,3 +1,4 @@
+import { loading } from '../utils/util'
 import Store from 'store'
 import commit from 'commit'
 
@@ -27,6 +28,8 @@ function findData ({
    */
 
   if (Store[tableName].hasNext) {
+    loading.show('正在加载...')
+
     let table = new wx.BaaS.TableObject(tableName)
 
     if (query && query.type && query.option) {
@@ -43,9 +46,11 @@ function findData ({
     table.limit(limit).offset(offset).orderBy(orderBy).find().then(res => {
       console.log(`find ${tableName} response`, res)
       commit._findData(tableName, query, res.data)
+      loading.hide()
       callback.then(res)
     }, err => {
       console.log(`find ${tableName} error`, err)
+      loading.hide()
       callback.catch(err)
     })
   } else {
@@ -55,33 +60,43 @@ function findData ({
 
 // 通过id精确获取单个数据
 function getData (tableName, id, callback = {}) {
+  loading.show('正在加载...')
+
   let table = new wx.BaaS.TableObject(tableName)
 
   table.get(id).then(res => {
     console.log(`get ${tableName} response`, res)
+    loading.hide()
     callback.then(res)
   }, err => {
     console.log(`get ${tableName} error`, err)
+    loading.hide()
     callback.catch(err)
   })
 }
 
 // 添加新的数据
 function addData ({ tableName, data, callback = {} }) {
+  loading.show('正在保存...')
+
   let table = new wx.BaaS.TableObject(tableName)
   let item = table.create().set(data)
 
   item.save().then(res => {
     console.log(`add ${tableName} response`, res)
+    loading.hide()
     callback.then(res)
   }, err => {
     console.log(`add ${tableName} error`, err)
+    loading.hide()
     callback.catch(err)
   })
 }
 
 // 编辑单个数据
 function updateData ({ tableName, data = {}, callback = {} }) {
+  loading.show('正在保存...')
+
   let table = new wx.BaaS.TableObject(tableName)
   let item = table.getWithoutData(data.id)
 
@@ -89,15 +104,19 @@ function updateData ({ tableName, data = {}, callback = {} }) {
 
   item.update().then(res => {
     console.log(`update ${tableName} response`, res)
+    loading.hide()
     callback.then(res)
   }, err => {
     console.log(`update ${tableName} error`, err)
+    loading.hide()
     callback.catch(err)
   })
 }
 
 // 对于number类型的字段，实现增量编辑
 function increaseData ({ tableName, data = {}, callback = {} }) {
+  loading.show('正在保存...')
+
   let table = new wx.BaaS.TableObject(tableName)
   let item = table.getWithoutData(data.id)
 
@@ -105,15 +124,19 @@ function increaseData ({ tableName, data = {}, callback = {} }) {
 
   item.update().then(res => {
     console.log(`increase ${tableName} response`, res)
+    loading.hide()
     callback.then(res)
   }, err => {
     console.log(`increase ${tableName} error`, err)
+    loading.hide()
     callback.catch(err)
   })
 }
 
 // 对于array类型的字段，添加元素到数组末尾
 function appendData ({ tableName, data = {}, callback = {} }) {
+  loading.show('正在保存...')
+
   let table = new wx.BaaS.TableObject(tableName)
   let item = table.getWithoutData(data.id)
 
@@ -121,15 +144,19 @@ function appendData ({ tableName, data = {}, callback = {} }) {
 
   item.update().then(res => {
     console.log(`append ${tableName} response`, res)
+    loading.hide()
     callback.then(res)
   }, err => {
     console.log(`append ${tableName} error`, err)
+    loading.hide()
     callback.catch(err)
   })
 }
 
 // 对于array类型的字段，删除指定元素
 function removeData ({ tableName, data = {}, callback = {} }) {
+  loading.show('正在删除...')
+
   let table = new wx.BaaS.TableObject(tableName)
   let item = table.getWithoutData(data.id)
 
@@ -137,22 +164,28 @@ function removeData ({ tableName, data = {}, callback = {} }) {
 
   item.update().then(res => {
     console.log(`remove ${tableName} response`, res)
+    loading.hide()
     callback.then(res)
   }, err => {
     console.log(`remove ${tableName} error`, err)
+    loading.hide()
     callback.catch(err)
   })
 }
 
 // 删除单个数据
 function deleteData ({ tableName, id, callback = {} }) {
+  loading.show('正在删除...')
+
   let table = new wx.BaaS.TableObject(tableName)
 
   item.delete(id).then(res => {
     console.log(`delete ${tableName} response`, res)
+    loading.hide()
     callback.then(res)
   }, err => {
     console.log(`delete ${tableName} error`, err)
+    loading.hide()
     callback.catch(err)
   })
 }

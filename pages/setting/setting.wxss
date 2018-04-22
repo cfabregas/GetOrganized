@@ -1,16 +1,11 @@
 page {
   background: #efeff4;
+  padding-top: 10px
 }
-.weui-panel {
-  margin-top: 10px !important
-}
-.weui-media-box__thumb {
-  height: 60px;
-  width: 60px;
-}
+
 .weui-media-box:active {
   background: #ececec
 }
 .weui-media-box__thumb {
-  border-radius: 6px
+  border-radius: 50%
 }

@@ -6,6 +6,9 @@ page {
   height: 100%;
   color: #1a1a1a;
 }
+page, view, scroll-view {
+  box-sizing: border-box;
+}
 
 .ellipsis {
   overflow: hidden;
@@ -35,4 +38,10 @@ page {
 }
 .blue {
   color: #576b95;
+}
+.orange {
+  color: #f2a557
+}
+.orange-light {
+  color: #f2ae67
 }
