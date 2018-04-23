@@ -1,4 +1,7 @@
-@import 'utils/weui.wxss'
+/* WeUI 样式库 */
+@import 'utils/weui.wxss';
+/* icon font 图标 */
+@import 'utils/iconfont.wxss';
 
 page {
   background-color: #fff;

@@ -2,3 +2,7 @@ view {
   padding: 20px;
   text-align: center;
 }
+.icon-book {
+  font-size: 30px;
+  color: #ec9f06
+}

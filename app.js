@@ -7,9 +7,13 @@ App({
   onLaunch () {
     // 启动BaaS服务
     BaaS.initBaaS()
+
+    // todo: 若有计时项目，则恢复
   },
   onShow () {},
-  onHide () {},
+  onHide () {
+    // todo: 若有计时项目，则保存
+  },
   BaaS: BaaS,
   Store: Store,
   request: request,

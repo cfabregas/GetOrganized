@@ -11,7 +11,7 @@ Page({
     this.login()
   },
   login () {
-    // 登录
+    // 获取授权并登录
     app.BaaS.login({
       then: res => {
         this.getUserInfo(res.id)
@@ -49,7 +49,7 @@ Page({
           params: ['is_deleted', '=', false] // 未被删除的任务
         }, {
           method: 'compare',
-          params: ['is_hidden', '=', false] // 未被删除的任务
+          params: ['is_hidden', '=', false] // 未被隐藏的任务
         }, {
           method: 'compare',
           params: ['stage', '<', 1] // 未完成的任务
