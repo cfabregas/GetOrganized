@@ -39,7 +39,7 @@ function getUserInfo ({ userId, loadingText = '正在登录...', callback = {} }
     console.log('get user info success', res)
 
     Object.assign(Store.userInfo, res.data) // 合并用户信息
-    loading.hide()
+    // loading.hide()
     callback.then(res.data)
   }, err => {
     console.log('get user info error', err)
