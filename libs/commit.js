@@ -10,7 +10,7 @@ function __resetData (tableName) {
   console.log(`${tableName} reseted`, Store[tableName])
 }
 
-function _findData (tableName, query, data) {
+function findData (tableName, query, data) {
   if (data.meta.offset === 0) {
     __resetData(tableName)
   }
@@ -28,5 +28,5 @@ function _findData (tableName, query, data) {
 }
 
 export default {
-  _findData
+  findData
 }

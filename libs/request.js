@@ -45,7 +45,7 @@ function findData ({
 
     table.limit(limit).offset(offset).orderBy(orderBy).find().then(res => {
       console.log(`find ${tableName} response`, res)
-      commit._findData(tableName, query, res.data)
+      commit.findData(tableName, query, res.data)
       loading.hide()
       callback.then(res)
     }, err => {
