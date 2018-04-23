@@ -4,7 +4,7 @@ page {
   background-color: #fff;
   font-size: 17px;
   height: 100%;
-  color: #1a1a1a;
+  color: #353535;
 }
 page, view, scroll-view {
   box-sizing: border-box;

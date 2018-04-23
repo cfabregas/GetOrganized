@@ -9,6 +9,7 @@ function findData ({
   limit = 20,
   offset = Store[tableName].list.length, // 默认根据本地已有数据来计算偏移量
   orderBy = 'created_at', // 默认按创建时间排序
+  loadingText = '正在加载...',
   callback = {}
 }) {
 
@@ -28,7 +29,7 @@ function findData ({
    */
 
   if (Store[tableName].hasNext) {
-    loading.show('正在加载...')
+    loading.show(loadingText)
 
     let table = new wx.BaaS.TableObject(tableName)
 
@@ -59,8 +60,8 @@ function findData ({
 }
 
 // 通过id精确获取单个数据
-function getData (tableName, id, callback = {}) {
-  loading.show('正在加载...')
+function getData ({ tableName, id, loadingText = '正在加载...', callback = {} }) {
+  loading.show(loadingText)
 
   let table = new wx.BaaS.TableObject(tableName)
 
@@ -76,8 +77,8 @@ function getData (tableName, id, callback = {}) {
 }
 
 // 添加新的数据
-function addData ({ tableName, data, callback = {} }) {
-  loading.show('正在保存...')
+function addData ({ tableName, data, loadingText = '正在保存...', callback = {} }) {
+  loading.show(loadingText)
 
   let table = new wx.BaaS.TableObject(tableName)
   let item = table.create().set(data)
@@ -94,8 +95,8 @@ function addData ({ tableName, data, callback = {} }) {
 }
 
 // 编辑单个数据
-function updateData ({ tableName, data = {}, callback = {} }) {
-  loading.show('正在保存...')
+function updateData ({ tableName, data = {}, loadingText = '正在保存...', callback = {} }) {
+  loading.show(loadingText)
 
   let table = new wx.BaaS.TableObject(tableName)
   let item = table.getWithoutData(data.id)
@@ -114,8 +115,8 @@ function updateData ({ tableName, data = {}, callback = {} }) {
 }
 
 // 对于number类型的字段，实现增量编辑
-function increaseData ({ tableName, data = {}, callback = {} }) {
-  loading.show('正在保存...')
+function increaseData ({ tableName, data = {}, loadingText = '正在保存...', callback = {} }) {
+  loading.show(loadingText)
 
   let table = new wx.BaaS.TableObject(tableName)
   let item = table.getWithoutData(data.id)
@@ -134,8 +135,8 @@ function increaseData ({ tableName, data = {}, callback = {} }) {
 }
 
 // 对于array类型的字段，添加元素到数组末尾
-function appendData ({ tableName, data = {}, callback = {} }) {
-  loading.show('正在保存...')
+function appendData ({ tableName, data = {}, loadingText = '正在保存...', callback = {} }) {
+  loading.show(loadingText)
 
   let table = new wx.BaaS.TableObject(tableName)
   let item = table.getWithoutData(data.id)
@@ -154,8 +155,8 @@ function appendData ({ tableName, data = {}, callback = {} }) {
 }
 
 // 对于array类型的字段，删除指定元素
-function removeData ({ tableName, data = {}, callback = {} }) {
-  loading.show('正在删除...')
+function removeData ({ tableName, data = {}, loadingText = '正在删除...', callback = {} }) {
+  loading.show(loadingText)
 
   let table = new wx.BaaS.TableObject(tableName)
   let item = table.getWithoutData(data.id)
@@ -174,8 +175,8 @@ function removeData ({ tableName, data = {}, callback = {} }) {
 }
 
 // 删除单个数据
-function deleteData ({ tableName, id, callback = {} }) {
-  loading.show('正在删除...')
+function deleteData ({ tableName, id, loadingText = '正在删除...', callback = {} }) {
+  loading.show(loadingText)
 
   let table = new wx.BaaS.TableObject(tableName)
 

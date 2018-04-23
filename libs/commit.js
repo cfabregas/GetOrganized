@@ -10,8 +10,8 @@ function __resetData (tableName) {
   console.log(`${tableName} reseted`, Store[tableName])
 }
 
-function findData (tableName, query, data) {
-  if (data.meta.offset === 0) {
+function findData (tableName, query = {}, data) {
+  if (data.meta.offset === 0 && Store[tableName].lastQuery) {
     __resetData(tableName)
   }
 

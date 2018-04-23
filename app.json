@@ -1,5 +1,6 @@
 {
   "pages":[
+    "pages/launch/launch",
     "pages/index/index",
     "pages/statics/statics",
     "pages/setting/setting"

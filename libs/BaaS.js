@@ -1,4 +1,5 @@
 import '../utils/sdk'
+import Store from 'store'
 import { loading } from '../utils/util'
 const clientId = 'e12a3118555868926fd8' // 小程序数据库id
 
@@ -11,14 +12,19 @@ function login (callback = {}) {
   wx.BaaS.login().then(res => {
     // 用户允许授权，res 包含用户完整信息
     console.log('同意授权', res)
+
+    Store.userInfo = res
     callback.then(res)
   }, res => {
     if (res instanceof Error) {
       // 网络错误
+      console.log('网络错误', err)
       callback.catch(res)
     } else {
       // 用户拒绝授权，res 包含基本用户信息：id、openid、unionid
       console.log('拒绝授权', res)
+
+      Store.userInfo = res
       callback.then(res)
     }
   })
@@ -31,10 +37,13 @@ function getUserInfo ({ userId, callback = {} }) {
 
   user.get(userId).then(res => {
     console.log('获取用户信息成功', res)
+
+    Object.assign(Store.userInfo, res)
     loading.hide()
     callback.then(res.data)
   }, err => {
     console.log('获取用户信息失败', err)
+
     loading.hide()
     callback.catch(err)
   })
@@ -48,10 +57,12 @@ function updateUserInfo ({ key, value, callback = {} }) {
 
   user.update().then(res => {
     console.log('保存成功', res)
+
     loading.hide()
     callback.then(res.data)
   }, err => {
     console.log('保存失败', err)
+
     loading.hide()
     callback.catch(err)
   })

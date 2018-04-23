@@ -4,7 +4,7 @@ const app = getApp()
 Page({
   data: {
     avatar: '../../assets/avatar.png',
-    name: '暂未登录',
+    name: '',
     locale: ''
   },
   onReady () {
@@ -12,7 +12,7 @@ Page({
     if (user.avatarUrl) {
       this.setData({
         avatar: user.avatarUrl,
-        name: user.nickName,
+        name: user.nickName || '游客',
         locale: `${user.country} ${user.province} ${user.city}`
       })
     }

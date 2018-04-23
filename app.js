@@ -7,44 +7,6 @@ App({
   onLaunch () {
     // 启动BaaS服务
     BaaS.initBaaS()
-
-    // 登录
-    BaaS.login({
-      then: function(res) {
-        Store.userInfo = res
-
-        // 加载用户基本信息
-        BaaS.getUserInfo({
-          userId: res.id,
-          callback: {
-            then: data => {
-              Object.assign(Store.userInfo, data)
-            },
-            catch: err => {
-              showModal(this) // 此时的this对象依然是login函数的callback
-            }
-          }
-        })
-
-        // todo：加载任务列表
-      },
-      catch: function(err) {
-        showModal(this)
-      }
-    })
-
-    function showModal(callback) {
-      wx.showModal({
-        title: '提示',
-        content: '网络错误，是否重试？',
-        confirmText: '重试',
-        success: res => {
-          if (res.confirm) {
-            BaaS.login(callback)
-          }
-        }
-      })
-    }
   },
   onShow () {},
   onHide () {},
