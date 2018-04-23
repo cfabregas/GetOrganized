@@ -3,9 +3,6 @@ page {
   padding-top: 10px
 }
 
-.weui-media-box:active {
-  background: #ececec
-}
 .weui-media-box__thumb {
   border-radius: 50%
 }

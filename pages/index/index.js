@@ -2,10 +2,12 @@ const app = getApp()
 
 Page({
   data: {
-    app: ''
+    taskList: []
   },
   onLoad () {
-
+    this.setData({
+      taskList: app.Store.task.list
+    })
   },
   save () {
     const tableName = 'names'

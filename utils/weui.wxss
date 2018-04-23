@@ -637,13 +637,14 @@ icon {
   display: block;
   width: 28px;
   height: 28px;
+  line-height: 28px;
+  text-align: center;
   margin: 0 auto
 }
 .weui-grid__label {
   margin-top: 5px;
   display: block;
   text-align: center;
-  color: #000;
   font-size: 14px;
   white-space: nowrap;
   text-overflow: ellipsis;

@@ -12,6 +12,9 @@ page {
 page, view, scroll-view {
   box-sizing: border-box;
 }
+.active:active {
+  background: #ececec
+}
 
 .ellipsis {
   overflow: hidden;
