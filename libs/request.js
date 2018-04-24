@@ -6,8 +6,8 @@ import commit from 'commit'
 function findData ({
   tableName,
   query,
+  replace,
   limit = 20,
-  offset = Store[tableName].list.length, // 默认根据本地已有数据来计算偏移量
   orderBy = 'created_at', // 默认按创建时间排序
   loadingText = '正在加载...',
   callback = {}
@@ -28,10 +28,11 @@ function findData ({
 
    */
 
-  if (Store[tableName].hasNext) {
+  if (Store[tableName].hasNext || replace) {
     loading.show(loadingText)
 
     let table = new wx.BaaS.TableObject(tableName)
+    let offset = replace ? 0 : Store[tableName].list.length // 偏移量
 
     if (query && query.type && query.option) {
       let options = []
@@ -46,7 +47,7 @@ function findData ({
 
     table.limit(limit).offset(offset).orderBy(orderBy).find().then(res => {
       console.log(`find ${tableName} response`, res)
-      commit.findData(tableName, query, res.data)
+      commit.findData(tableName, query, replace, res.data)
       loading.hide()
       callback.then(res)
     }, err => {

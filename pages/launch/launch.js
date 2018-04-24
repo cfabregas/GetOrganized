@@ -36,6 +36,7 @@ Page({
     // 加载任务列表，完成后跳转到首页
     app.request.findData({
       tableName: 'task',
+      replace: true,
       query: {
         type: 'and',
         option: [{

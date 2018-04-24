@@ -4,5 +4,5 @@
   text-align: center;
 }
 .weui-grid__label {
-  color: #353535;
+  color: inherit;
 }
