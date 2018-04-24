@@ -17,6 +17,7 @@ Page({
         this.getUserInfo(res.id)
       },
       catch: err => {
+        console.log(err)
         this.showModal('login')
       }
     })
@@ -30,6 +31,7 @@ Page({
           this.getTask(id)
         },
         catch: err => {
+          console.log(err)
           this.showModal('getUserInfo', id)
         }
       }
@@ -63,6 +65,7 @@ Page({
           })
         },
         catch: err => {
+          console.log(err)
           this.showModal('getTask', id)
         }
       }
