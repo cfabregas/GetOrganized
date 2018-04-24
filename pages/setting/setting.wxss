@@ -1,8 +1,10 @@
 page {
   background: #efeff4;
-  padding-top: 10px
 }
 
 .weui-media-box__thumb {
   border-radius: 50%
+}
+.weui-panel, .weui-cells {
+  margin-top: 10px !important
 }

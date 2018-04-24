@@ -10,3 +10,14 @@
     </view>
   </view>
 </view>
+
+<view class="weui-cells">
+  <view class="weui-cell active" id="listType" bind:tap="onCellTap">
+    <view class="weui-cell__bd">首页展示</view>
+    <view class="weui-cell__ft weui-cell__ft_in-access">{{listType}}</view>
+  </view>
+  <view class="weui-cell active" id="theme" bind:tap="onCellTap">
+    <view class="weui-cell__bd">主题</view>
+    <view class="weui-cell__ft weui-cell__ft_in-access">{{theme}}</view>
+  </view>
+</view>
