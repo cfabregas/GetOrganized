@@ -1,0 +1,8 @@
+/* grid */
+.weui-grid__icon {
+  line-height: 28px;
+  text-align: center;
+}
+.weui-grid__label {
+  color: #353535;
+}

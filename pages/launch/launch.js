@@ -1,12 +1,6 @@
 const app = getApp()
 
 Page({
-  onLoad () {
-    wx.showNavigationBarLoading()
-  },
-  onUnload () {
-    wx.hideNavigationBarLoading()
-  },
   onReady () {
     this.login()
   },
@@ -14,6 +8,7 @@ Page({
     // 获取授权并登录
     app.BaaS.login({
       then: res => {
+        wx.showNavigationBarLoading()
         this.getUserInfo(res.id)
       },
       catch: err => {
@@ -60,6 +55,7 @@ Page({
       loadingText: '正在初始化...',
       callback: {
         then: res => {
+          wx.hideNavigationBarLoading()
           wx.switchTab({
             url: '../index/index'
           })

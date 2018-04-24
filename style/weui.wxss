@@ -637,8 +637,6 @@ icon {
   display: block;
   width: 28px;
   height: 28px;
-  line-height: 28px;
-  text-align: center;
   margin: 0 auto
 }
 .weui-grid__label {
@@ -646,6 +644,7 @@ icon {
   display: block;
   text-align: center;
   font-size: 14px;
+  color: #000;
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden
