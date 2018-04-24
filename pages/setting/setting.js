@@ -1,11 +1,8 @@
 import util from '../../utils/util'
 const app = getApp()
-const listType = {
-  grid: '九宫格',
-  list: '列表'
-}
-const theme = {
-  default: '默认'
+const setting = {
+  listType: [{ value: 'grid', label: '九宫格' }, { value: 'list', label: '列表' }],
+  theme: [{ value: 'default', label: '默认' }]
 }
 
 Page({
@@ -19,8 +16,8 @@ Page({
         avatar: user.avatarUrl,
         name: user.nickName || '不愿意透露姓名的玩家',
         locale: user.country ? `${user.country} ${user.province} ${user.city}` : '',
-        listType: listType[user.list_type],
-        theme: theme[user.theme]
+        listType: setting.listType.find(item => item.value === user.list_type),
+        theme: setting.theme.find(item => item.value === user.theme)
       })
     }
   },
@@ -33,14 +30,12 @@ Page({
     }
   },
   onCellTap (e) {
-    console.log(e.currentTarget.id, top)
+    let cell = e.currentTarget.id
     wx.showActionSheet({
-      itemList: ['23', '34'],
+      itemList: setting[cell].map(i => i.label),
       success: function(res) {
-        console.log(res.tapIndex)
-      },
-      fail: function(res) {
-        console.log(res.errMsg)
+        let item = setting[cell][res.tapIndex]
+        console.log(item)
       }
     })
   }
