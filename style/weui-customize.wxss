@@ -6,3 +6,8 @@
 .weui-grid__label {
   color: inherit;
 }
+
+/* panel */
+.weui-panel:before, .weui-panel:after {
+  border-color: #d9d9d9
+}

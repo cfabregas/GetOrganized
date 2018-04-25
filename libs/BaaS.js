@@ -58,6 +58,7 @@ function updateUserInfo ({ key, value, loadingText = '正在保存...', callback
   user.update().then(res => {
     console.log('user info updated', res)
 
+    Object.assign(Store.userInfo, res.data) // 合并用户信息
     loading.hide()
     callback.then(res.data)
   }, err => {

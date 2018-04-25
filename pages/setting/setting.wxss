@@ -9,3 +9,9 @@ page {
 .weui-cells {
   margin-top: 15px
 }
+.weui-cell.no-padding {
+  padding: 0
+}
+.weui-cell.no-padding picker {
+  flex: 1;
+}
