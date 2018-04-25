@@ -27,6 +27,7 @@ Page({
       },
       callback: {
         then: res => {
+          // 同步更新该任务的数据
           app.commit.updateData('task', {
             id: res.task_id,
             last_duration: res.duration,
