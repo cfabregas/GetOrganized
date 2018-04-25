@@ -16,7 +16,7 @@ Page({
       this.setData({
         avatar: avatarThumb,
         name: user.nickName || '不愿意透露姓名的玩家',
-        locale: user.country ? `${user.country} ${user.province} ${user.city}` : '',
+        // locale: user.country ? `${user.country} ${user.province} ${user.city}` : '',
         listStyle: setInfo.listStyle,
         defaultLimit: setInfo.defaultLimit,
         i18n: setInfo.i18n,

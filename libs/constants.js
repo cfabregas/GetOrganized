@@ -1,4 +1,4 @@
-function getLimits () {
+function __getLimits () {
   let limits = []
   for (let i = 10; i <= 60; i++) {
     limits.push({
@@ -14,7 +14,7 @@ const setting = {
     { value: 'grid', label: '九宫格' },
     { value: 'list', label: '列表' }
   ],
-  default_limit: getLimits(),
+  default_limit: __getLimits(),
   theme: [
     { value: 'default', label: '默认' }
   ],
