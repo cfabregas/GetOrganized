@@ -10,17 +10,17 @@ Page({
   onReady () {
     const user = app.Store.userInfo
     const avatarThumb = user.avatarUrl.slice(0, -1) + '132'
-    const setInfo = this.getSetInfo()
+    const settingInfo = this.getSettingInfo()
 
     if (user.avatarUrl) {
       this.setData({
         avatar: avatarThumb,
         name: user.nickName || '不愿意透露姓名的玩家',
         // locale: user.country ? `${user.country} ${user.province} ${user.city}` : '',
-        listStyle: setInfo.listStyle,
-        defaultLimit: setInfo.defaultLimit,
-        i18n: setInfo.i18n,
-        theme: setInfo.theme
+        listStyle: settingInfo.listStyle,
+        defaultLimit: settingInfo.defaultLimit,
+        i18n: settingInfo.i18n,
+        theme: settingInfo.theme
       })
     }
   },
@@ -53,10 +53,11 @@ Page({
   onPickerChange (e) {
     const key = e.currentTarget.id
     const value = setting[key][e.detail.value].value
-
-    this.updateUserInfo(key, value)
+    if (app.Store.userInfo.default_limit !== value) {
+      this.updateUserInfo(key, value)
+    }
   },
-  getSetInfo () {
+  getSettingInfo () {
     const user = app.Store.userInfo
 
     const listStyle = setting.list_style.find(item => item.value === user.list_style)
@@ -72,16 +73,17 @@ Page({
       value: value,
       callback: {
         then: res => {
-          const setInfo = this.getSetInfo()
+          const settingInfo = this.getSettingInfo()
           this.setData({
-            listStyle: setInfo.listStyle,
-            defaultLimit: setInfo.defaultLimit,
-            i18n: setInfo.i18n,
-            theme: setInfo.theme
+            listStyle: settingInfo.listStyle,
+            defaultLimit: settingInfo.defaultLimit,
+            i18n: settingInfo.i18n,
+            theme: settingInfo.theme
           }, () => {
             wx.showToast({
               title: '保存成功',
-              icon: 'success'
+              icon: 'success',
+              duration: 800
             })
           })
         },
