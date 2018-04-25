@@ -11,7 +11,7 @@ let Store = {
   },
 
   // 操作记录
-  log: {
+  logs: {
     total: 0,
     hasNext: true,
     lastQuery: null,

@@ -14,7 +14,6 @@ function findData ({
 }) {
 
   /*
-
     指定的query格式，更多查询方法见
     https://doc.minapp.com/js-sdk/schema/query.html
 
@@ -25,7 +24,6 @@ function findData ({
         params: ['price', '<', 1]
       }]
     }
-
    */
 
   if (Store[tableName].hasNext || replace) {
@@ -78,7 +76,7 @@ function getData ({ tableName, id, loadingText = '正在加载...', callback = {
 }
 
 // 添加新的数据
-function addData ({ tableName, data, loadingText = '正在保存...', callback = {} }) {
+function addData ({ tableName, data, insert, loadingText = '正在保存...', callback = {} }) {
   loading.show(loadingText)
 
   let table = new wx.BaaS.TableObject(tableName)
@@ -86,8 +84,9 @@ function addData ({ tableName, data, loadingText = '正在保存...', callback =
 
   item.save().then(res => {
     console.log(`add ${tableName} response`, res)
+    commit.addData(tableName, res.data, insert)
     loading.hide()
-    callback.then(res)
+    callback.then(res.data)
   }, err => {
     console.log(`add ${tableName} error`, err)
     loading.hide()
@@ -107,7 +106,7 @@ function updateData ({ tableName, data = {}, loadingText = '正在保存...', ca
   item.update().then(res => {
     console.log(`update ${tableName} response`, res)
     loading.hide()
-    callback.then(res)
+    callback.then(res.data)
   }, err => {
     console.log(`update ${tableName} error`, err)
     loading.hide()

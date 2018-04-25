@@ -24,9 +24,40 @@ function findData (tableName, query = {}, replace, data) {
     Store[tableName].dict[item.id] = item
   }
 
-  console.log(`${tableName} committed`, Store[tableName])
+  console.log(`find ${tableName} committed`, Store[tableName])
+}
+
+function addData (tableName, item, insert) {
+  if (insert) {
+    Store[tableName].list.unshift(item)
+  } else {
+    Store[tableName].list.push(item)
+  }
+
+  Store[tableName].dict[item.id] = item
+  Store[tableName].total++
+
+  console.log(`add ${tableName} committed`, Store[tableName])
+}
+
+function updateData (tableName, data) {
+  let item = Store[tableName].dict[data.id]
+  console.log(item, data)
+  Object.assign(item, data)
+  console.log(item, data)
+
+  for (let i in Store[tableName].list) {
+    if (Store[tableName].list[i].id === data.id) {
+      Store[tableName].list.splice(i, 1, item)
+      Store[tableName].dict[data.id] = item
+    }
+  }
+
+  console.log(`update ${tableName} committed`, Store[tableName])
 }
 
 export default {
-  findData
+  findData,
+  addData,
+  updateData
 }

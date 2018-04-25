@@ -20,10 +20,52 @@ const setting = {
   ],
   i18n: [
     { value: 'zh_CN', label: '中文-简体' },
-    { value: 'en', label: 'English' }
+    // { value: 'en', label: 'English' }
   ]
 }
 
+const iconList = [
+  'alarm',
+  'americanfootball',
+  'analytics',
+  'baseball',
+  'basketball',
+  'bell',
+  'bolt',
+  'book',
+  'bookmarks',
+  'briefcase',
+  'camera',
+  'cart',
+  'colorfilter',
+  'colorwand',
+  'compose',
+  'email',
+  'film',
+  'flame',
+  'flask',
+  'flower',
+  'football',
+  'gamecontroller',
+  'glasses',
+  'home',
+  'infinite',
+  'light',
+  'location',
+  'monitor',
+  'musicnotes',
+  'navigate',
+  'nutrition',
+  'paperplane',
+  'rose',
+  'searchstrong',
+  'stopwatch',
+  'toggle',
+  'wineglass',
+  'world',
+]
+
 export {
-  setting
+  setting,
+  iconList
 }
