@@ -42,9 +42,7 @@ function addData (tableName, item, insert) {
 
 function updateData (tableName, data) {
   let item = Store[tableName].dict[data.id]
-  console.log(item, data)
   Object.assign(item, data)
-  console.log(item, data)
 
   for (let i in Store[tableName].list) {
     if (Store[tableName].list[i].id === data.id) {
