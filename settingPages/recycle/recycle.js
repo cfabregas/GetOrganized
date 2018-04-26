@@ -4,20 +4,25 @@ const app = getApp()
 
 Page({
   data: {
+    avatar: '../../assets/avatar.png',
     defaultLimits: setting.default_limit
   },
   onReady () {
     const user = app.Store.userInfo
+    const avatarThumb = user.avatarUrl.slice(0, -1) + '132'
     const settingInfo = this.getSettingInfo()
 
-    this.setData({
-      avatar: user.avatarUrl || '../../assets/logo.png',
-      name: user.nickName || '神秘的玩家',
-      listStyle: settingInfo.listStyle,
-      defaultLimit: settingInfo.defaultLimit,
-      i18n: settingInfo.i18n,
-      theme: settingInfo.theme
-    })
+    if (user.avatarUrl) {
+      this.setData({
+        avatar: avatarThumb,
+        name: user.nickName || '不愿意透露姓名的玩家',
+        // locale: user.country ? `${user.country} ${user.province} ${user.city}` : '',
+        listStyle: settingInfo.listStyle,
+        defaultLimit: settingInfo.defaultLimit,
+        i18n: settingInfo.i18n,
+        theme: settingInfo.theme
+      })
+    }
   },
   // 预览头像大图
   onAvatarTap (e) {

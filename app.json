@@ -5,6 +5,10 @@
     "pages/statics/statics",
     "pages/setting/setting"
   ],
+  "subPackages": [{
+    "root": "settingPages",
+    "pages": ["recycle/recycle", "about/about"]
+  }],
   "window":{
     "backgroundColor": "#fff",
     "backgroundTextStyle": "light",

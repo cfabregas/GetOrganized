@@ -30,7 +30,19 @@
     <view class="weui-cell__ft weui-cell__ft_in-access">{{theme.label}}</view>
   </view>
   <view class="weui-cell active" id="i18n" bind:tap="onCellTap">
-    <view class="weui-cell__bd">语言</view>
+    <view class="weui-cell__bd">Language</view>
     <view class="weui-cell__ft weui-cell__ft_in-access">{{i18n.label}}</view>
   </view>
+</view>
+
+<!-- 回收站、关于 -->
+<view class="weui-cells">
+  <navigator url="../../settingPages/recycle/recycle" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+    <view class="weui-cell__bd">回收站</view>
+    <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+  </navigator>
+  <navigator url="../../settingPages/about/about" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+    <view class="weui-cell__bd">关于</view>
+    <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+  </navigator>
 </view>

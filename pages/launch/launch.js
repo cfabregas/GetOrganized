@@ -1,7 +1,17 @@
 const app = getApp()
 
 Page({
-  onReady () {
+  data: {
+    url: '../index/index'
+  },
+  onLoad (option) {
+    if (option.url) {
+      console.log('redirect to: ', option.url)
+      this.setData({
+        url: option.url
+      })
+    }
+
     this.login()
   },
   login () {
@@ -47,9 +57,6 @@ Page({
           params: ['is_deleted', '=', false] // 未被删除的任务
         }, {
           method: 'compare',
-          params: ['is_hidden', '=', false] // 未被隐藏的任务
-        }, {
-          method: 'compare',
           params: ['stage', '<', 1] // 未完成的任务
         }]
       },
@@ -58,7 +65,7 @@ Page({
         then: res => {
           wx.hideNavigationBarLoading()
           wx.switchTab({
-            url: '../index/index'
+            url: this.data.url
           })
         },
         catch: err => {

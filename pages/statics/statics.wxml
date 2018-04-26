@@ -1,3 +1,3 @@
 <view>
-  {{title}}
+  <image class="admire" mode="aspectFill" src="{{url}}" bind:tap="onImageTap"></image>
 </view>

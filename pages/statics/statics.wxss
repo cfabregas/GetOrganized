@@ -1,5 +1,5 @@
-view {
-  padding: 20px;
-  text-align: center;
+.admire {
+  width: 750rpx;
+  height: 750rpx;
 }
 

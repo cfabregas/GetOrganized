@@ -49,8 +49,12 @@ Page({
     console.log('todo: 新建任务')
   },
   updateTaskList () {
+    // 过滤已经隐藏的任务
+    let list = app.Store.task.list.filter(item => item.is_hidden === false)
+    // todo: 区分计时/打卡、永久/阶段性任务
+
     this.setData({
-      taskList: app.Store.task.list
+      taskList: list
     })
   }
 })
