@@ -1,14 +1,17 @@
 {
   "pages":[
     "pages/launch/launch",
+
     "pages/index/index",
+    "pages/index/task/task",
+    "pages/index/add/add",
+    
     "pages/statics/statics",
-    "pages/setting/setting"
+
+    "pages/setting/setting",
+    "pages/setting/recycle/recycle",
+    "pages/setting/about/about"
   ],
-  "subPackages": [{
-    "root": "settingPages",
-    "pages": ["recycle/recycle", "about/about"]
-  }],
   "window":{
     "backgroundColor": "#fff",
     "backgroundTextStyle": "light",

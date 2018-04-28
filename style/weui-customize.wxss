@@ -1,4 +1,8 @@
 /* grid */
+.weui-grids, .weui-grid {
+  border: none;
+  border-radius: 8px
+}
 .weui-grid__icon {
   line-height: 28px;
   text-align: center;

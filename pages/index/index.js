@@ -2,16 +2,17 @@ const app = getApp()
 
 Page({
   data: {
-    taskList: {
-      listStyle: '',
-      daily: [],
-      term: []
-    }
+    listStyle: 'grid',
+    taskList: [],
+    total: 0
   },
   onShow () {
     this.updateTaskList()
   },
   onTaskTap (e) {
+    console.log(e)
+  },
+  addLog (e) {
     const task = app.Store.task.dict[e.currentTarget.id]
     const duration = parseInt((Math.random() * 100).toFixed(0))
 
@@ -21,7 +22,6 @@ Page({
         user_id: task.user_id,
         task_id: task.id,
         task_name: task.name,
-        user_name: task.user_name,
 
         duration: duration,
         stage: 0,
@@ -53,19 +53,18 @@ Page({
     console.log('todo: 新建任务')
   },
   updateTaskList () {
-    // 过滤已经隐藏的任务
-    const list = app.Store.task.list.filter(item => item.is_hidden === false)
+    const list = app.Store.task.list
 
     // 区分日常/阶段性任务
-    let daily = []; let term = []
-    for (let item of list) {
-      item.type === 'daily' ? daily.push(item) : term.push(item)
-    }
+    // let daily = []; let temp = []
+    // for (let item of list) {
+    //   item.type === 'daily' ? daily.push(item) : temp.push(item)
+    // }
 
     this.setData({
-      'taskList.listStyle': app.Store.userInfo.list_style,
-      'taskList.daily': daily,
-      'taskList.term': term,
+      listStyle: app.Store.userInfo.list_style,
+      total: list.length,
+      taskList: list.filter(item => item.is_hidden === false)
     })
   }
 })

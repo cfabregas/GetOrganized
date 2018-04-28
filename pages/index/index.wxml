@@ -1,18 +1,23 @@
-<view wx:if="{{taskList.listStyle === 'grid'}}" class="weui-grids">
-  <view class="weui-grid active" wx:for="{{taskList.daily}}" wx:key="{{item.id}}" bind:tap="" id="{{item.id}}">
-    <view class="weui-grid__icon">
-      <text class="iconfont icon-{{item.icon}}" style="color: {{item.icon_color}};"></text>
+<!-- 九宫格布局 -->
+<view wx:if="{{listStyle === 'grid'}}" class="grid">
+  <view class="title">日常项目</view>
+  <view class="weui-grids">
+    <view class="weui-grid active" wx:for="{{taskList}}" wx:key="{{item.id}}" bind:tap="onTaskTap" id="{{item.id}}">
+      <view class="weui-grid__icon">
+        <text class="iconfont icon-{{item.icon}}" style="color: {{item.icon_color}};"></text>
+      </view>
+      <view class="weui-grid__label">{{item.name}}</view>
     </view>
-    <view class="weui-grid__label">{{item.name}}</view>
-  </view>
-  <view class="weui-grid active" bind:tap="onTaskAdd">
-    <view class="weui-grid__icon">
-      <text class="iconfont icon-plusempty" style="color: #888888;"></text>
+    <view wx:if="{{total < 20}}" class="weui-grid active" bind:tap="onTaskAdd">
+      <view class="weui-grid__icon">
+        <text class="iconfont icon-plusempty" style="color: #888888;"></text>
+      </view>
+      <view class="weui-grid__label">添加</view>
     </view>
-    <view class="weui-grid__label">添加</view>
   </view>
 </view>
-
-<view wx:else>
+  
+<!-- 列表布局 -->
+<view wx:else class="list">
   list
 </view>

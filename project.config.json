@@ -28,13 +28,19 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 0,
+			"current": 1,
 			"list": [
 				{
 					"id": 0,
-					"name": "redirect",
+					"name": "setting",
 					"pathName": "pages/launch/launch",
 					"query": "url=../setting/setting"
+				},
+				{
+					"id": -1,
+					"name": "index",
+					"pathName": "pages/launch/launch",
+					"query": "url=../index/index"
 				}
 			]
 		}
