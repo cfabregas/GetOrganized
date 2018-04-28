@@ -18,3 +18,6 @@ page {
 .weui-cell.no-padding picker {
   flex: 1;
 }
+.authorize-btn {
+  float: right;
+}

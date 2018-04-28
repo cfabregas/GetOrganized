@@ -2,9 +2,13 @@ const app = getApp()
 
 Page({
   data: {
-    taskList: []
+    taskList: {
+      listStyle: '',
+      daily: [],
+      term: []
+    }
   },
-  onLoad () {
+  onShow () {
     this.updateTaskList()
   },
   onTaskTap (e) {
@@ -50,11 +54,18 @@ Page({
   },
   updateTaskList () {
     // 过滤已经隐藏的任务
-    let list = app.Store.task.list.filter(item => item.is_hidden === false)
-    // todo: 区分计时/打卡、永久/阶段性任务
+    const list = app.Store.task.list.filter(item => item.is_hidden === false)
+
+    // 区分日常/阶段性任务
+    let daily = []; let term = []
+    for (let item of list) {
+      item.type === 'daily' ? daily.push(item) : term.push(item)
+    }
 
     this.setData({
-      taskList: list
+      'taskList.listStyle': app.Store.userInfo.list_style,
+      'taskList.daily': daily,
+      'taskList.term': term,
     })
   }
 })

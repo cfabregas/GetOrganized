@@ -1,12 +1,20 @@
 <!-- 用户信息 -->
 <view class="weui-panel">
-  <view class="weui-media-box weui-media-box_appmsg active">
-    <view class="weui-media-box__hd_in-appmsg" bind:tap="onAvatarTap">
+  <view class="weui-media-box weui-media-box_appmsg">
+    <view class="weui-media-box__hd_in-appmsg">
       <image class="weui-media-box__thumb" src="{{avatar}}"></image>
     </view>
     <view class="weui-media-box__bd_in-appmsg">
-      <view class="weui-media-box__title">{{name}}</view>
-      <view class="weui-media-box__desc">{{locale}}</view>
+      <block wx:if="{{authorized}}">
+        <view class="weui-media-box__title">{{name}}</view>
+        <view class="weui-media-box__desc"></view>
+      </block>
+      <block wx:else>
+        <button class="authorize-btn" size="mini" type="primary"
+          open-type="getUserInfo" lang="{{i18n.value}}" bindgetuserinfo="onGetUserInfo">
+          授权登录
+        </button>
+      </block>
     </view>
   </view>
 </view>

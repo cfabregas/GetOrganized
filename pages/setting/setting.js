@@ -6,26 +6,17 @@ Page({
   data: {
     defaultLimits: setting.default_limit
   },
-  onReady () {
-    const user = app.Store.userInfo
-    const settingInfo = this.getSettingInfo()
-
-    this.setData({
-      avatar: user.avatarUrl || '../../assets/logo.png',
-      name: user.nickName || '神秘的玩家',
-      listStyle: settingInfo.listStyle,
-      defaultLimit: settingInfo.defaultLimit,
-      i18n: settingInfo.i18n,
-      theme: settingInfo.theme
-    })
+  onLoad () {
+    this.renderUserInfo()
   },
-  // 预览头像大图
-  onAvatarTap (e) {
-    let url = app.Store.userInfo.avatarUrl
-    if (!!url) {
-      wx.previewImage({
-        current: url,
-        urls: [url]
+  // 用户授权
+  onGetUserInfo (e) {
+    const userInfo = e.detail.userInfo
+
+    if (userInfo) {
+      this.updateUserInfo({
+        avatarUrl: userInfo.avatarUrl,
+        nickName: userInfo.nickName
       })
     }
   },
@@ -39,7 +30,7 @@ Page({
         let value = setting[key][res.tapIndex].value
 
         if (app.Store.userInfo[key] !== value) {
-          this.updateUserInfo(key, value)
+          this.updateUserInfo({ [key]: value })
         }
       }
     })
@@ -49,11 +40,11 @@ Page({
     const key = e.currentTarget.id
     const value = setting[key][e.detail.value].value
     if (app.Store.userInfo.default_limit !== value) {
-      this.updateUserInfo(key, value)
+      this.updateUserInfo({ [key]: value })
     }
   },
-  // 获取用户设置信息
-  getSettingInfo () {
+  // 重绘用户信息
+  renderUserInfo () {
     const user = app.Store.userInfo
 
     const listStyle = setting.list_style.find(item => item.value === user.list_style)
@@ -61,28 +52,23 @@ Page({
     const i18n = setting.i18n.find(item => item.value === user.i18n)
     const theme = setting.theme.find(item => item.value === user.theme)
 
-    return { listStyle, defaultLimit, i18n, theme }
+    this.setData({
+      avatar: app.Store.userInfo.avatarUrl || '../../assets/logo.png',
+      name: app.Store.userInfo.nickName || '',
+      authorized: app.Store.userInfo.is_authorized,
+      listStyle,
+      defaultLimit,
+      i18n,
+      theme
+    })
   },
   // 更新用户设置信息
-  updateUserInfo (key, value) {
+  updateUserInfo (data) {
     app.BaaS.updateUserInfo({
-      key: key,
-      value: value,
+      data,
       callback: {
         then: res => {
-          const settingInfo = this.getSettingInfo()
-          this.setData({
-            listStyle: settingInfo.listStyle,
-            defaultLimit: settingInfo.defaultLimit,
-            i18n: settingInfo.i18n,
-            theme: settingInfo.theme
-          }, () => {
-            wx.showToast({
-              title: '保存成功',
-              icon: 'success',
-              duration: 800
-            })
-          })
+          this.renderUserInfo()
         },
         catch: err => {
           wx.showModal({

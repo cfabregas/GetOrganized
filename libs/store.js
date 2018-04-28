@@ -1,5 +1,5 @@
 let Store = {
-  userInfo: null,
+  userInfo: {},
 
   // 任务列表
   task: {

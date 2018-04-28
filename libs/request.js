@@ -6,7 +6,7 @@ import commit from 'commit'
 function findData ({
   tableName,
   query,
-  replace,
+  replace = false,
   limit = 20,
   orderBy = 'created_at', // 默认按创建时间排序
   loadingText = '正在加载...',

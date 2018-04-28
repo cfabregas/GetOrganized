@@ -1,5 +1,6 @@
 import Store from 'store'
 
+// 内部方法，用于重置数据
 function __resetData (tableName) {
   Store[tableName].total = 0
   Store[tableName].hasNext = true
@@ -10,8 +11,19 @@ function __resetData (tableName) {
   console.log(`${tableName} reseted`, Store[tableName])
 }
 
+// 仅暴露给BaaS模块更新用户数据
+function _updateUserInfo (data) {
+  Object.assign(Store.userInfo, data)
+
+  console.log('user info updated', Store.userInfo)
+}
+
+/*
+  以下方法与request模块一一对应
+ */
+
 function findData (tableName, query = {}, replace, data) {
-  if (replace) {
+  if (replace && !!Store[tableName.lastQuery]) {
     __resetData(tableName)
   }
 
@@ -55,6 +67,8 @@ function updateData (tableName, data) {
 }
 
 export default {
+  _updateUserInfo,
+
   findData,
   addData,
   updateData

@@ -1,32 +1,24 @@
 import '../utils/sdk'
-import Store from 'store'
+import commit from 'commit'
 import { loading } from '../utils/util'
 const clientId = 'e12a3118555868926fd8' // 小程序数据库id
 
 function initBaaS () {
   wx.BaaS.init(clientId)
-  console.log('App Inited')
+  console.log('App Inited Right Now')
 }
 
 function login (callback = {}) {
-  wx.BaaS.login().then(res => {
-    // 用户允许授权，res 包含用户完整信息
-    console.log('authorized', res)
+  // 静默登录，只返回基本信息，小程序后续不允许私自发起getUserInfo接口，所以放在设置页由用户手动发起
+  wx.BaaS.login(false).then(res => {
+    console.log('user login successed', res)
 
-    Store.userInfo = res
+    commit._updateUserInfo(res)
     callback.then(res)
-  }, res => {
-    if (res instanceof Error) {
-      // 网络错误
-      console.log('network error', err)
-      callback.catch(res)
-    } else {
-      // 用户拒绝授权，res 包含基本用户信息：id、openid、unionid
-      console.log('rejected', res)
+  }, err => {
+    console.log('network error', err)
 
-      Store.userInfo = res
-      callback.then(res)
-    }
+    callback.catch(err)
   })
 }
 
@@ -38,7 +30,7 @@ function getUserInfo ({ userId, loadingText = '正在登录...', callback = {} }
   user.get(userId).then(res => {
     console.log('get user info success', res)
 
-    Object.assign(Store.userInfo, res.data) // 合并用户信息
+    commit._updateUserInfo(res.data)
     // loading.hide()
     callback.then(res.data)
   }, err => {
@@ -49,16 +41,16 @@ function getUserInfo ({ userId, loadingText = '正在登录...', callback = {} }
   })
 }
 
-function updateUserInfo ({ key, value, loadingText = '正在保存...', callback = {} }) {
+function updateUserInfo ({ data, loadingText = '正在保存...', callback = {} }) {
   loading.show(loadingText)
 
   let user = new wx.BaaS.User()
-  user = user.getCurrentUserWithoutData().set(key, value)
+  user = user.getCurrentUserWithoutData().set(data)
 
   user.update().then(res => {
     console.log('user info updated', res)
 
-    Object.assign(Store.userInfo, res.data) // 合并用户信息
+    commit._updateUserInfo(res.data)
     loading.hide()
     callback.then(res.data)
   }, err => {

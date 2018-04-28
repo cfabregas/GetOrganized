@@ -15,7 +15,7 @@ Page({
     this.login()
   },
   login () {
-    // 获取授权并登录
+    // 静默登录
     app.BaaS.login({
       then: res => {
         wx.showNavigationBarLoading()
@@ -23,6 +23,8 @@ Page({
       },
       catch: err => {
         console.log(err)
+
+        wx.hideNavigationBarLoading()
         this.showModal('login')
       }
     })
@@ -37,6 +39,8 @@ Page({
         },
         catch: err => {
           console.log(err)
+
+          wx.hideNavigationBarLoading()
           this.showModal('getUserInfo', id)
         }
       }
@@ -70,6 +74,8 @@ Page({
         },
         catch: err => {
           console.log(err)
+
+          wx.hideNavigationBarLoading()
           this.showModal('getTask', id)
         }
       }
@@ -81,6 +87,7 @@ Page({
       content: '网络错误，是否重试？',
       confirmText: '重试',
       success: res => {
+        wx.showNavigationBarLoading()
         if (res.confirm) {
           console.log(method, id)
           this[method](id)
