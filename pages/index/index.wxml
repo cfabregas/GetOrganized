@@ -1,6 +1,6 @@
 <!-- 九宫格布局 -->
 <view wx:if="{{listStyle === 'grid'}}" class="grid">
-  <view class="title">日常项目</view>
+  <!-- <view class="title">我的项目</view> -->
   <view class="weui-grids">
     <view class="weui-grid active" wx:for="{{taskList}}" wx:key="{{item.id}}" bind:tap="onTaskTap" id="{{item.id}}">
       <view class="weui-grid__icon">

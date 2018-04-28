@@ -10,7 +10,15 @@ Page({
     this.updateTaskList()
   },
   onTaskTap (e) {
-    console.log(e)
+    let taskId = e.currentTarget.id
+    wx.navigateTo({
+      url: 'task/task?id=' + taskId
+    })
+  },
+  onTaskAdd (e) {
+    wx.navigateTo({
+      url: 'add/add'
+    })
   },
   addLog (e) {
     const task = app.Store.task.dict[e.currentTarget.id]
@@ -48,9 +56,6 @@ Page({
         catch: err => {}
       }
     })
-  },
-  onTaskAdd (e) {
-    console.log('todo: 新建任务')
   },
   updateTaskList () {
     const list = app.Store.task.list
