@@ -23,7 +23,7 @@ function _updateUserInfo (data) {
  */
 
 function findData (tableName, query = {}, replace, data) {
-  if (replace && !!Store[tableName.lastQuery]) {
+  if (replace && !!Store[tableName].lastQuery) {
     __resetData(tableName)
   }
 

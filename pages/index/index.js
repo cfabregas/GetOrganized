@@ -7,16 +7,15 @@ Page({
     total: 0,
     editMode: false
   },
-  onLoad () {
-    this.getTask()
-  },
   onShow () {
     // todo: get storage to order
-    
+
     const loaded = !!app.Store.task.lastQuery
 
     if (loaded) {
       this.updateTaskList()
+    } else {
+      this.getTask()
     }
   },
   onTaskTap (e) {

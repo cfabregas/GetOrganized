@@ -1,3 +1,4 @@
 {
-  "navigationBarTitleText": "Get Organized"
+  "navigationBarTitleText": "Get Organized",
+  "enablePullDownRefresh": false
 }
