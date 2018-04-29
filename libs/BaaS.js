@@ -22,8 +22,8 @@ function login (callback = {}) {
   })
 }
 
-function getUserInfo ({ userId, loadingText = '正在登录...', callback = {} }) {
-  loading.show(loadingText)
+function getUserInfo ({ userId, showLoading = true, loadingText = '正在登录...', callback = {} }) {
+  showLoading && loading.show(loadingText)
 
   let user = new wx.BaaS.User()
 
@@ -31,7 +31,7 @@ function getUserInfo ({ userId, loadingText = '正在登录...', callback = {} }
     console.log('get user info success', res)
 
     commit._updateUserInfo(res.data)
-    // loading.hide()
+    loading.hide()
     callback.then(res.data)
   }, err => {
     console.log('get user info error', err)
@@ -41,8 +41,8 @@ function getUserInfo ({ userId, loadingText = '正在登录...', callback = {} }
   })
 }
 
-function updateUserInfo ({ data, loadingText = '正在保存...', callback = {} }) {
-  loading.show(loadingText)
+function updateUserInfo ({ data, showLoading = true, loadingText = '正在保存...', callback = {} }) {
+  showLoading && loading.show(loadingText)
 
   let user = new wx.BaaS.User()
   user = user.getCurrentUserWithoutData().set(data)

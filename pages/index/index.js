@@ -7,9 +7,17 @@ Page({
     total: 0,
     editMode: false
   },
+  onLoad () {
+    this.getTask()
+  },
   onShow () {
     // todo: get storage to order
-    this.updateTaskList()
+    
+    const loaded = !!app.Store.task.lastQuery
+
+    if (loaded) {
+      this.updateTaskList()
+    }
   },
   onTaskTap (e) {
     let taskId = e.currentTarget.id
@@ -59,8 +67,43 @@ Page({
       }
     })
   },
+  getTask () {
+    const id = app.Store.userInfo.id
+
+    app.request.findData({
+      tableName: 'task',
+      replace: true,
+      query: {
+        type: 'and',
+        option: [{
+          method: 'compare',
+          params: ['user_id', '=', id] // 当前用户的任务
+        }, {
+          method: 'compare',
+          params: ['is_deleted', '=', false] // 未被删除的任务
+        }, {
+          method: 'compare',
+          params: ['stage', '<', 1] // 未完成的任务
+        }]
+      },
+      // showLoading: false,
+      loadingText: '正在同步...',
+      callback: {
+        then: res => {
+          this.updateTaskList()
+        },
+        catch: err => {
+          console.log(err)
+          app.showModal(() => {
+            this.getTask(id)
+          })
+        }
+      }
+    })
+  },
   updateTaskList () {
     const list = app.Store.task.list.filter(item => item.is_hidden === false)
+
     list.map(item => {
       if (item.method === 'timer') {
         item.desc = `累计${(item.total_duration / 60).toFixed(1)}小时`

@@ -71,15 +71,8 @@ Page({
           this.renderUserInfo()
         },
         catch: err => {
-          wx.showModal({
-            title: '提示',
-            content: '网络错误，是否重试？',
-            confirmText: '重试',
-            success: res => {
-              if (res.confirm) {
-                this.updateUserInfo(key, value)
-              }
-            }
+          app.showModal(() => {
+            this.updateUserInfo(data)
           })
         }
       }

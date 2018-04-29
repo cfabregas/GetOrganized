@@ -12,6 +12,19 @@ App({
   onHide () {
     // todo: 若有计时项目，则保存
   },
+  // 网络错误时统一弹窗处理
+  showModal (callback) {
+    wx.showModal({
+      title: '提示',
+      content: '网络错误，是否重试？',
+      confirmText: '重试',
+      success: res => {
+        if (res.confirm) {
+          callback()
+        }
+      }
+    })
+  },
   BaaS: BaaS,
   Store: Store,
   request: request,
