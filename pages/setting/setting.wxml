@@ -1,6 +1,6 @@
 <!-- 用户信息 -->
 <view class="weui-panel">
-  <view class="weui-media-box weui-media-box_appmsg">
+  <view class="weui-media-box weui-media-box_appmsg {{authorized && 'active'}}">
     <view class="weui-media-box__hd_in-appmsg">
       <image class="weui-media-box__thumb" src="{{avatar}}"></image>
     </view>

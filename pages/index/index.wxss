@@ -1,11 +1,21 @@
-.grid, .list {
+.weui-grids {
   padding: 10px
 }
-.title {
-  padding: 0 10px;
-  font-size: 15px;
-  color: #888
-}
-.iconfont {
+.weui-grids .iconfont {
   font-size: 28px;
+}
+
+.weui-media-box {
+  padding: 10px 15px;
+}
+.weui-media-box__hd_in-appmsg {
+  margin-right: 10px;
+  width: 48px;
+  height: 48px;
+  line-height: 48px;
+  border-radius: 4px;
+}
+.weui-panel .iconfont {
+  font-size: 28px;
+  color: #fff
 }

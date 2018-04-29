@@ -7,6 +7,7 @@ Page({
     total: 0
   },
   onShow () {
+    // todo: get storage to order
     this.updateTaskList()
   },
   onTaskTap (e) {
