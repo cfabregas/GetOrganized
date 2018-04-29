@@ -4,7 +4,8 @@ Page({
   data: {
     listStyle: 'grid',
     taskList: [],
-    total: 0
+    total: 0,
+    editMode: false
   },
   onShow () {
     // todo: get storage to order
@@ -59,18 +60,22 @@ Page({
     })
   },
   updateTaskList () {
-    const list = app.Store.task.list
-
-    // 区分日常/阶段性任务
-    // let daily = []; let temp = []
-    // for (let item of list) {
-    //   item.type === 'daily' ? daily.push(item) : temp.push(item)
-    // }
+    const list = app.Store.task.list.filter(item => item.is_hidden === false)
+    list.map(item => {
+      if (item.method === 'timer') {
+        item.desc = `累计${(item.total_duration / 60).toFixed(1)}小时`
+      } else {
+        item.desc = `累计${item.total_commits}次打卡`
+      }
+      if (item.type !== 'daily') {
+        item.desc += ` / 已完成${item.stage}%`
+      }
+    })
 
     this.setData({
       listStyle: app.Store.userInfo.list_style,
-      total: list.length,
-      taskList: list.filter(item => item.is_hidden === false)
+      total: app.Store.task.list.length,
+      taskList: list
     })
   }
 })

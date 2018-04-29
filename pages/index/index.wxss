@@ -1,7 +1,7 @@
 .weui-grids {
   padding: 10px
 }
-.weui-grids .iconfont {
+.iconfont {
   font-size: 28px;
 }
 
@@ -13,9 +13,5 @@
   width: 48px;
   height: 48px;
   line-height: 48px;
-  border-radius: 4px;
-}
-.weui-panel .iconfont {
-  font-size: 28px;
-  color: #fff
+  border-radius: 6px;
 }

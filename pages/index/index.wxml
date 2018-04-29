@@ -1,12 +1,15 @@
 <!-- 九宫格布局 -->
 <view wx:if="{{listStyle === 'grid'}}" class="weui-grids">
+  <!-- 任务列表 -->
   <view class="weui-grid active" wx:for="{{taskList}}" wx:key="{{item.id}}" bind:tap="onTaskTap" id="{{item.id}}">
     <view class="weui-grid__icon">
       <text class="iconfont icon-{{item.icon}}" style="color: {{item.icon_color}};"></text>
     </view>
     <view class="weui-grid__label">{{item.name}}</view>
   </view>
-  <view wx:if="{{total < 100}}" class="weui-grid active" bind:tap="onTaskAdd">
+
+  <!-- 新建任务 -->
+  <view wx:if="{{!editMode && (total < 100)}}" class="weui-grid active" bind:tap="onTaskAdd">
     <view class="weui-grid__icon">
       <text class="iconfont icon-plusempty" style="color: #888;"></text>
     </view>
@@ -16,13 +19,24 @@
   
 <!-- 列表布局 -->
 <view wx:else class="weui-panel">
+  <!-- 任务列表 -->
   <view wx:for="{{taskList}}" wx:key="{{item.id}}" bind:tap="onTaskTap" id="{{item.id}}" class="weui-media-box weui-media-box_appmsg active">
     <view class="weui-media-box__hd_in-appmsg" style="background: {{item.icon_color}}">
-      <text class="weui-media-box__thumb iconfont icon-{{item.icon}}"></text>
+      <text class="iconfont icon-{{item.icon}}" style="color: #fff"></text>
     </view>
     <view class="weui-media-box__bd_in-appmsg">
       <view class="weui-media-box__title">{{item.name}}</view>
-      <view class="weui-media-box__desc">{{item.id}}</view>
+      <view class="weui-media-box__desc">{{item.desc}}</view>
+    </view>
+  </view>
+
+  <!-- 新建任务 -->
+  <view wx:if="{{!editMode && (total < 100)}}" class="weui-media-box weui-media-box_appmsg active" bind:tap="onTaskAdd">
+    <view class="weui-media-box__hd_in-appmsg" style="background: #888;">
+      <text class="iconfont icon-plusempty" style="color: #fff"></text>
+    </view>
+    <view class="weui-media-box__bd_in-appmsg">
+      <view class="weui-media-box__title">添加</view>
     </view>
   </view>
 </view>
