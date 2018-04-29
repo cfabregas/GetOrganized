@@ -5,9 +5,11 @@ Page({
     task: {}
   },
   onLoad (option) {
+    const task = app.Store.task.dict[option.id]
     this.setData({
-      task: app.Store.task.dict[option.id]
+      task: task
     })
+    console.log('task', task)
   },
   onReady () {
     wx.setNavigationBarTitle({

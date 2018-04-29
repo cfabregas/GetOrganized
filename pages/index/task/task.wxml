@@ -1,7 +1,8 @@
-<!-- 回收站、关于 -->
-<view class="weui-cells">
-  <navigator url="" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
-    <view class="weui-cell__bd">任务名</view>
-    <view class="weui-cell__ft weui-cell__ft_in-access"></view>
-  </navigator>
-</view>
+<swiper indicator-dots="{{true}}" indicator-color="rgba(255,255,255,.3)" indicator-active-color="rgba(255,255,255,.7)" class="container">
+  <swiper-item class="first">
+    <view class="clock"></view>
+  </swiper-item>
+  <swiper-item>
+    second
+  </swiper-item>
+</swiper>
