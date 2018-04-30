@@ -8,6 +8,7 @@ Page({
     iconList: taskOption.iconList,
     iconColorList: taskOption.iconColorList,
     defaultLimits: app.Constant.setting.default_limits,
+    defaultLimitIndex: taskOption.default_limits.findIndex(item => item.value === 30),
 
     newTask: {
       name: '',
