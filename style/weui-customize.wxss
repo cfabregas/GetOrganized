@@ -16,7 +16,13 @@
   border-color: #d9d9d9
 }
 
-/* cells */
+/* cells & picker */
 .weui-cells {
   margin-top: 15px
+}
+.weui-cell.picker-inside {
+  padding: 0
+}
+.weui-cell.picker-inside picker {
+  flex: 1;
 }

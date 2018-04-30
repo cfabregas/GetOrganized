@@ -1,10 +1,13 @@
+import { formatTime } from '../../../utils/util'
 const app = getApp()
 const taskOption = app.Constant.taskOption
 
 Page({
   data: {
+    focus: false,
     iconList: taskOption.iconList,
     iconColorList: taskOption.iconColorList,
+    defaultLimits: app.Constant.setting.default_limits,
 
     newTask: {
       name: '',
@@ -12,11 +15,9 @@ Page({
       icon_color: taskOption.iconColorList[parseInt(Math.random() * (taskOption.iconColorList.length - 1))], // 最后一个颜色为fff
       type: taskOption.type[0],
       method: taskOption.method[0],
-      deadline: Date.now(),
-      default_limit: taskOption.default_limits[20]
-    },
-
-    focus: false
+      deadline: formatTime({ type: 'date' }),
+      default_limit: taskOption.default_limits.find(item => item.value === 30)
+    }
   },
   onLoad (option) {
     console.log(option)
@@ -32,6 +33,27 @@ Page({
     })
   },
   onCellTap (e) {
+    console.log(e)
+    let key = e.currentTarget.id
+
+    wx.showActionSheet({
+      itemList: taskOption[key].map(i => i.label),
+      success: res => {
+        let item = taskOption[key][+(res.tapIndex)]
+
+        if (key === 'type') {
+          this.setData({
+            'newTask.type': item
+          })
+        } else {
+          this.setData({
+            'newTask.method': item
+          })
+        }          
+      }
+    })
+  },
+  onPickerChange (e) {
     console.log(e)
   },
   onCreate (e) {

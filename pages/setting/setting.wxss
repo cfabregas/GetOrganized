@@ -8,12 +8,6 @@ page {
 .weui-media-box__title {
   font-size: 19px
 }
-.weui-cell.no-padding {
-  padding: 0
-}
-.weui-cell.no-padding picker {
-  flex: 1;
-}
 .authorize-btn {
   float: right;
 }

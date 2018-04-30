@@ -20,7 +20,7 @@ function clone () {
   return val
 }
 
-function formatTime (date) {
+function formatTime ({ date = new Date(), type = 'full' }) {
   const year = date.getFullYear()
   const month = date.getMonth() + 1
   const day = date.getDate()
@@ -28,7 +28,16 @@ function formatTime (date) {
   const minute = date.getMinutes()
   const second = date.getSeconds()
 
-  return [year, month, day].map(formatNumber).join('/') + ' ' + [hour, minute, second].map(formatNumber).join(':')
+  const dateStr = [year, month, day].map(formatNumber).join('-')
+  const timeStr = [hour, minute, second].map(formatNumber).join(':')
+
+  if (type === 'full') {
+    return dateStr + ' ' + timeStr
+  } else if (type === 'date') {
+    return dateStr
+  } else {
+    return timeStr
+  }
 }
 
 function formatNumber (num) {
