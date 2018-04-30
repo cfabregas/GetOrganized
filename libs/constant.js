@@ -101,8 +101,15 @@ const setting = {
   ]
 }
 
+// 图片资源
+const image = {
+  logo: 'https://cloud-minapp-13603.cloud.ifanrusercontent.com/1fD9K2GlMNtVkaaW.png',
+  reward: 'https://cloud-minapp-13603.cloud.ifanrusercontent.com/1fD9YAzVAixANiam.jpg'
+}
+
 export default {
   taskMax,
   taskOption,
-  setting
+  setting,
+  image
 }

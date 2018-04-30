@@ -67,7 +67,7 @@ Page({
     const theme = setting.theme.find(item => item.value === user.theme)
 
     this.setData({
-      avatar: user.avatarUrl || '../../assets/logo.png',
+      avatar: user.avatarUrl || app.Constant.image.logo,
       name: user.nickName || '',
       listStyle,
       defaultLimit,

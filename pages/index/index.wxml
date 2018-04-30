@@ -8,7 +8,7 @@
     <view class="weui-grid__label">{{item.name}}</view>
   </view>
 
-  <!-- 新建任务 -->
+  <!-- 添加任务 -->
   <view wx:if="{{!editMode && (total < taskMax)}}" class="weui-grid active" bind:tap="onTaskAdd">
     <view class="weui-grid__icon">
       <text class="iconfont icon-plusempty" style="color: #888;"></text>
@@ -30,7 +30,7 @@
     </view>
   </view>
 
-  <!-- 新建任务 -->
+  <!-- 添加任务 -->
   <view wx:if="{{!editMode && (total < taskMax)}}" class="weui-media-box weui-media-box_appmsg active" bind:tap="onTaskAdd">
     <view class="weui-media-box__hd_in-appmsg" style="background: #888;">
       <text class="iconfont icon-plusempty" style="color: #fff"></text>

@@ -43,5 +43,5 @@
 
 <!-- 创建按钮 -->
 <view class="button">
-  <button type="primary" bind:tap="onCreate">创 建</button>
+  <button type="primary" disabled="{{!newTask.name}}" bind:tap="onCreate">创 建</button>
 </view>

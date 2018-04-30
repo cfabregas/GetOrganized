@@ -1,10 +1,9 @@
-import util from '../../utils/util'
 const app = getApp()
 
 Page({
   data: {
     title: 'statics',
-    url: 'https://cloud-minapp-13603.cloud.ifanrusercontent.com/1fBZYzASEBWueinq.jpg'
+    url: app.Constant.image.reward
   },
   onLoad () {
 
