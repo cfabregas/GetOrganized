@@ -38,7 +38,7 @@ Page({
   // 修改默认提醒时间
   onPickerChange (e) {
     const key = e.currentTarget.id
-    const value = setting[key][e.detail.value].value
+    const value = this.data.defaultLimits[e.detail.value].value
     if (user.default_limit !== value) {
       this.updateUserInfo({ [key]: value })
     }
@@ -61,15 +61,17 @@ Page({
   },
   // 重绘用户信息
   renderUserInfo () {
-    const listStyle = setting.list_style.find(item => item.value === user.list_style)
-    const defaultLimit = setting.default_limits.findIndex(item => item.value === user.default_limit)
-    const i18n = setting.i18n.find(item => item.value === user.i18n)
-    const theme = setting.theme.find(item => item.value === user.theme)
+    const listStyle = setting.list_style.find(item => item.value === user.list_style).label
+    const defaultLimitIndex = setting.default_limits.findIndex(item => item.value === user.default_limit)
+    const defaultLimit = setting.default_limits.find(item => item.value === user.default_limit).label
+    const i18n = setting.i18n.find(item => item.value === user.i18n).label
+    const theme = setting.theme.find(item => item.value === user.theme).label
 
     this.setData({
       avatar: user.avatarUrl || app.Constant.image.logo,
       name: user.nickName || '',
       listStyle,
+      defaultLimitIndex,
       defaultLimit,
       i18n,
       theme

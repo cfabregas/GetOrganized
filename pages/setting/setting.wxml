@@ -24,23 +24,23 @@
   <view class="weui-cells">
     <view class="weui-cell active" id="list_style" bind:tap="onCellTap">
       <view class="weui-cell__bd">首页风格</view>
-      <view class="weui-cell__ft weui-cell__ft_in-access">{{listStyle.label}}</view>
+      <view class="weui-cell__ft weui-cell__ft_in-access">{{listStyle}}</view>
     </view>
     <view class="weui-cell active no-padding">
-      <picker id="default_limit" bind:change="onPickerChange" value="{{defaultLimit}}" range="{{defaultLimits}}" range-key="label">
+      <picker id="default_limit" bind:change="onPickerChange" value="{{defaultLimitIndex}}" range="{{defaultLimits}}" range-key="label">
         <view class="weui-cell">
           <view class="weui-cell__bd">默认时长</view>
-          <view class="weui-cell__ft weui-cell__ft_in-access">{{defaultLimits[defaultLimit].label}}</view>
+          <view class="weui-cell__ft weui-cell__ft_in-access">{{defaultLimit}}</view>
         </view>
       </picker>
     </view>
     <view class="weui-cell active" id="theme" bind:tap="onCellTap">
       <view class="weui-cell__bd">主题</view>
-      <view class="weui-cell__ft weui-cell__ft_in-access">{{theme.label}}</view>
+      <view class="weui-cell__ft weui-cell__ft_in-access">{{theme}}</view>
     </view>
     <view class="weui-cell active" id="i18n" bind:tap="onCellTap">
       <view class="weui-cell__bd">Language</view>
-      <view class="weui-cell__ft weui-cell__ft_in-access">{{i18n.label}}</view>
+      <view class="weui-cell__ft weui-cell__ft_in-access">{{i18n}}</view>
     </view>
   </view>
 
