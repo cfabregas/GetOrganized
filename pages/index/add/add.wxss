@@ -1,16 +1,24 @@
 page {
   background: #efeff4;
 }
-.weui-cells {
+.weui-cells:first-child {
   margin-top: 0
 }
-.weui-cell__ft.icon {
-  box-sizing: content-box;
-  width: 40px;
-  height: 40px;
-  line-height: 40px;
+.weui-cell__ft .icon-container {
+  width: 48px;
+  height: 48px;
+  text-align: center;
+  line-height: 48px;
   border-radius: 6px;
 }
 .iconfont {
-  font-size: 40px
+  font-size: 28px;
+  color: #fff
+}
+.button {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 15px;
 }

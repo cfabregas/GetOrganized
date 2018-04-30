@@ -1,12 +1,31 @@
+// 生成10-60分钟的提醒时间
 function __getLimits () {
   let limits = []
+
   for (let i = 10; i <= 60; i++) {
     limits.push({
       value: i,
       label: i + ' 分钟'
     })
   }
+  
   return limits
+}
+
+// 生成216种web安全色
+function __getColors () {
+  let element = ['00', '33', '66', '99', 'cc', 'ff']
+  let colors = []
+
+  for (let j of element) {
+    for (let k of element) {
+      for (let l of element) {
+        colors.push('#' + j + k + l)
+      }
+    }
+  }
+
+  return colors
 }
 
 // 最大任务数量(不包括已删除的)
@@ -21,7 +40,49 @@ const taskOption = {
   method: [
     { value: 'timer', label: '计时' },
     { value: 'commit', label: '打卡' }
-  ]
+  ],
+  iconList: [
+    'alarm',
+    'americanfootball',
+    'analytics',
+    'baseball',
+    'basketball',
+    'bell',
+    'bolt',
+    'book',
+    'bookmarks',
+    'briefcase',
+    'camera',
+    'cart',
+    'colorfilter',
+    'colorwand',
+    'compose',
+    'email',
+    'film',
+    'flame',
+    'flask',
+    'flower',
+    'football',
+    'gamecontroller',
+    'glasses',
+    'home',
+    'infinite',
+    'light',
+    'location',
+    'monitor',
+    'musicnotes',
+    'navigate',
+    'nutrition',
+    'paperplane',
+    'rose',
+    'searchstrong',
+    'stopwatch',
+    'toggle',
+    'wineglass',
+    'world',
+  ],
+  iconColorList: __getColors(),
+  default_limits: __getLimits(),
 }
 
 // 用户设置的选项
@@ -40,54 +101,8 @@ const setting = {
   ]
 }
 
-// 图标列表
-const iconList = [
-  'alarm',
-  'americanfootball',
-  'analytics',
-  'baseball',
-  'basketball',
-  'bell',
-  'bolt',
-  'book',
-  'bookmarks',
-  'briefcase',
-  'camera',
-  'cart',
-  'colorfilter',
-  'colorwand',
-  'compose',
-  'email',
-  'film',
-  'flame',
-  'flask',
-  'flower',
-  'football',
-  'gamecontroller',
-  'glasses',
-  'home',
-  'infinite',
-  'light',
-  'location',
-  'monitor',
-  'musicnotes',
-  'navigate',
-  'nutrition',
-  'paperplane',
-  'rose',
-  'searchstrong',
-  'stopwatch',
-  'toggle',
-  'wineglass',
-  'world',
-]
-
-// 颜色列表
-const iconColorList = []
-
 export default {
   taskMax,
-  setting,
-  iconList,
-  iconColorList
+  taskOption,
+  setting
 }

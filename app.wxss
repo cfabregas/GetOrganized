@@ -16,6 +16,10 @@ page, view, scroll-view {
 .active:active {
   background: #ececec
 }
+input {
+  height: 24px;
+  min-height: 24px;
+}
 
 .ellipsis {
   overflow: hidden;

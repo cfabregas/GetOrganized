@@ -1,8 +1,10 @@
 const app = getApp()
+const user = app.Store.userInfo
+const setting = app.Constant.setting
 
 Page({
   data: {
-    defaultLimits: app.Constant.setting.default_limits
+    defaultLimits: setting.default_limits
   },
   onLoad () {
     this.renderUserInfo()
@@ -23,11 +25,11 @@ Page({
     let key = e.currentTarget.id
 
     wx.showActionSheet({
-      itemList: app.Constant.setting[key].map(i => i.label),
+      itemList: setting[key].map(i => i.label),
       success: res => {
-        let value = app.Constant.setting[key][res.tapIndex].value
+        let value = setting[key][res.tapIndex].value
 
-        if (app.Store.userInfo[key] !== value) {
+        if (user[key] !== value) {
           this.updateUserInfo({ [key]: value })
         }
       }
@@ -36,8 +38,8 @@ Page({
   // 修改默认提醒时间
   onPickerChange (e) {
     const key = e.currentTarget.id
-    const value = app.Constant.setting[key][e.detail.value].value
-    if (app.Store.userInfo.default_limit !== value) {
+    const value = setting[key][e.detail.value].value
+    if (user.default_limit !== value) {
       this.updateUserInfo({ [key]: value })
     }
   },
@@ -59,9 +61,6 @@ Page({
   },
   // 重绘用户信息
   renderUserInfo () {
-    const user = app.Store.userInfo
-    const setting = app.Constant.setting
-
     const listStyle = setting.list_style.find(item => item.value === user.list_style)
     const defaultLimit = setting.default_limits.findIndex(item => item.value === user.default_limit)
     const i18n = setting.i18n.find(item => item.value === user.i18n)
