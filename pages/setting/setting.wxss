@@ -1,6 +1,5 @@
 page {
   background: #efeff4;
-  padding-top: 15px
 }
 
 .weui-media-box__thumb {

@@ -12,6 +12,18 @@ function __getLimits () {
 // 最大任务数量(不包括已删除的)
 const taskMax = 100
 
+// 任务选项
+const taskOption = {
+  type: [
+    { value: 'daily', label: '日常项目' },
+    { value: 'temp', label: '阶段性项目' }
+  ],
+  method: [
+    { value: 'timer', label: '计时' },
+    { value: 'commit', label: '打卡' }
+  ]
+}
+
 // 用户设置的选项
 const setting = {
   list_style: [

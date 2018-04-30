@@ -24,7 +24,11 @@ Page({
           if (task.is_custom) {
             this.updateTask({ id: taskId, is_deleted: true })
           } else {
-            console.log('custom task')
+            wx.showModal({
+              title: '提示',
+              content: '不允许删除默认项目',
+              showCancel: false
+            })
           }
         }
       }

@@ -70,7 +70,6 @@ Page({
     this.setData({
       avatar: user.avatarUrl || '../../assets/logo.png',
       name: user.nickName || '',
-      authorized: user.is_authorized,
       listStyle,
       defaultLimit,
       i18n,

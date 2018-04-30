@@ -1,7 +1,14 @@
-<!-- 回收站、关于 -->
-<view class="weui-cells">
-  <navigator url="" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
-    <view class="weui-cell__bd">新建</view>
-    <view class="weui-cell__ft weui-cell__ft_in-access"></view>
-  </navigator>
+<view style="padding-top: 15px">
+  <view class="weui-cells">
+    <view class="weui-cell active" bind:tap="">
+      <view class="weui-cell__bd">图标</view>
+      <view class="weui-cell__ft weui-cell__ft_in-access icon">
+        <text class="iconfont icon-{{newTask.icon}}" style="color: {{newTask.icon_color}};"></text>
+      </view>
+    </view>
+    <view class="weui-cell active" bind:tap="">
+      <view class="weui-cell__bd">名称</view>
+      <view class="weui-cell__ft weui-cell__ft_in-access">{{newTask.name}}</view>
+    </view>
+  </view>
 </view>

@@ -1,56 +1,58 @@
-<!-- 用户信息 -->
-<view class="weui-panel">
-  <view class="weui-media-box weui-media-box_appmsg {{authorized && 'active'}}">
-    <view class="weui-media-box__hd_in-appmsg">
-      <image class="weui-media-box__thumb" src="{{avatar}}"></image>
-    </view>
-    <view class="weui-media-box__bd_in-appmsg">
-      <block wx:if="{{authorized}}">
-        <view class="weui-media-box__title">{{name}}</view>
-        <view class="weui-media-box__desc"></view>
-      </block>
-      <block wx:else>
-        <button class="authorize-btn" size="mini" type="primary"
-          open-type="getUserInfo" lang="{{i18n.value}}" bindgetuserinfo="onGetUserInfo">
-          授权登录
-        </button>
-      </block>
-    </view>
-  </view>
-</view>
-
-<!-- 设置项 -->
-<view class="weui-cells">
-  <view class="weui-cell active" id="list_style" bind:tap="onCellTap">
-    <view class="weui-cell__bd">首页风格</view>
-    <view class="weui-cell__ft weui-cell__ft_in-access">{{listStyle.label}}</view>
-  </view>
-  <view class="weui-cell active no-padding">
-    <picker id="default_limit" bind:change="onPickerChange" value="{{defaultLimit}}" range="{{defaultLimits}}" range-key="label">
-      <view class="weui-cell">
-        <view class="weui-cell__bd">默认时长</view>
-        <view class="weui-cell__ft weui-cell__ft_in-access">{{defaultLimits[defaultLimit].label}}</view>
+<view style="padding-top: 15px">
+  <!-- 用户信息 -->
+  <view class="weui-panel">
+    <view class="weui-media-box weui-media-box_appmsg {{!!name && 'active'}}">
+      <view class="weui-media-box__hd_in-appmsg">
+        <image class="weui-media-box__thumb" src="{{avatar}}"></image>
       </view>
-    </picker>
+      <view class="weui-media-box__bd_in-appmsg">
+        <block wx:if="{{!!name}}">
+          <view class="weui-media-box__title">{{name}}</view>
+          <view class="weui-media-box__desc"></view>
+        </block>
+        <block wx:else>
+          <button class="authorize-btn" size="mini" type="primary"
+            open-type="getUserInfo" lang="{{i18n.value}}" bindgetuserinfo="onGetUserInfo">
+            授权登录
+          </button>
+        </block>
+      </view>
+    </view>
   </view>
-  <view class="weui-cell active" id="theme" bind:tap="onCellTap">
-    <view class="weui-cell__bd">主题</view>
-    <view class="weui-cell__ft weui-cell__ft_in-access">{{theme.label}}</view>
-  </view>
-  <view class="weui-cell active" id="i18n" bind:tap="onCellTap">
-    <view class="weui-cell__bd">Language</view>
-    <view class="weui-cell__ft weui-cell__ft_in-access">{{i18n.label}}</view>
-  </view>
-</view>
 
-<!-- 回收站、关于 -->
-<view class="weui-cells">
-  <navigator url="recycle/recycle" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
-    <view class="weui-cell__bd">回收站</view>
-    <view class="weui-cell__ft weui-cell__ft_in-access"></view>
-  </navigator>
-  <navigator url="about/about" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
-    <view class="weui-cell__bd">关于</view>
-    <view class="weui-cell__ft weui-cell__ft_in-access"></view>
-  </navigator>
+  <!-- 设置项 -->
+  <view class="weui-cells">
+    <view class="weui-cell active" id="list_style" bind:tap="onCellTap">
+      <view class="weui-cell__bd">首页风格</view>
+      <view class="weui-cell__ft weui-cell__ft_in-access">{{listStyle.label}}</view>
+    </view>
+    <view class="weui-cell active no-padding">
+      <picker id="default_limit" bind:change="onPickerChange" value="{{defaultLimit}}" range="{{defaultLimits}}" range-key="label">
+        <view class="weui-cell">
+          <view class="weui-cell__bd">默认时长</view>
+          <view class="weui-cell__ft weui-cell__ft_in-access">{{defaultLimits[defaultLimit].label}}</view>
+        </view>
+      </picker>
+    </view>
+    <view class="weui-cell active" id="theme" bind:tap="onCellTap">
+      <view class="weui-cell__bd">主题</view>
+      <view class="weui-cell__ft weui-cell__ft_in-access">{{theme.label}}</view>
+    </view>
+    <view class="weui-cell active" id="i18n" bind:tap="onCellTap">
+      <view class="weui-cell__bd">Language</view>
+      <view class="weui-cell__ft weui-cell__ft_in-access">{{i18n.label}}</view>
+    </view>
+  </view>
+
+  <!-- 回收站、关于 -->
+  <view class="weui-cells">
+    <navigator url="recycle/recycle" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+      <view class="weui-cell__bd">回收站</view>
+      <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+    </navigator>
+    <navigator url="about/about" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+      <view class="weui-cell__bd">关于</view>
+      <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+    </navigator>
+  </view>
 </view>

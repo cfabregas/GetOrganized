@@ -1,1 +1,6 @@
-
+page {
+  background: #efeff4;
+}
+.weui-cells {
+  margin-top: 0
+}
