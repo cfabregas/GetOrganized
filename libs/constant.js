@@ -9,12 +9,16 @@ function __getLimits () {
   return limits
 }
 
+// 最大任务数量(不包括已删除的)
+const taskMax = 100
+
+// 用户设置的选项
 const setting = {
   list_style: [
     { value: 'grid', label: '九宫格' },
     { value: 'list', label: '列表' }
   ],
-  default_limit: __getLimits(),
+  default_limits: __getLimits(),
   theme: [
     { value: 'default', label: '默认' }
   ],
@@ -24,6 +28,7 @@ const setting = {
   ]
 }
 
+// 图标列表
 const iconList = [
   'alarm',
   'americanfootball',
@@ -65,7 +70,12 @@ const iconList = [
   'world',
 ]
 
-export {
+// 颜色列表
+const iconColorList = []
+
+export default {
+  taskMax,
   setting,
-  iconList
+  iconList,
+  iconColorList
 }

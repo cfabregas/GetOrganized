@@ -106,6 +106,7 @@ function updateData ({ tableName, data = {}, showLoading = true, loadingText = '
 
   item.update().then(res => {
     console.log(`update ${tableName} response`, res)
+    commit.updateData(tableName, res.data)
     loading.hide()
     callback.then(res.data)
   }, err => {

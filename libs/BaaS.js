@@ -31,7 +31,7 @@ function getUserInfo ({ userId, showLoading = true, loadingText = '正在登录.
     console.log('get user info success', res)
 
     commit._updateUserInfo(res.data)
-    loading.hide()
+    // loading.hide()
     callback.then(res.data)
   }, err => {
     console.log('get user info error', err)

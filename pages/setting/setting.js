@@ -1,10 +1,8 @@
-import util from '../../utils/util'
-import { setting } from '../../libs/constants'
 const app = getApp()
 
 Page({
   data: {
-    defaultLimits: setting.default_limit
+    defaultLimits: app.Constant.setting.default_limits
   },
   onLoad () {
     this.renderUserInfo()
@@ -25,9 +23,9 @@ Page({
     let key = e.currentTarget.id
 
     wx.showActionSheet({
-      itemList: setting[key].map(i => i.label),
+      itemList: app.Constant.setting[key].map(i => i.label),
       success: res => {
-        let value = setting[key][res.tapIndex].value
+        let value = app.Constant.setting[key][res.tapIndex].value
 
         if (app.Store.userInfo[key] !== value) {
           this.updateUserInfo({ [key]: value })
@@ -38,29 +36,10 @@ Page({
   // 修改默认提醒时间
   onPickerChange (e) {
     const key = e.currentTarget.id
-    const value = setting[key][e.detail.value].value
+    const value = app.Constant.setting[key][e.detail.value].value
     if (app.Store.userInfo.default_limit !== value) {
       this.updateUserInfo({ [key]: value })
     }
-  },
-  // 重绘用户信息
-  renderUserInfo () {
-    const user = app.Store.userInfo
-
-    const listStyle = setting.list_style.find(item => item.value === user.list_style)
-    const defaultLimit = setting.default_limit.findIndex(item => item.value === user.default_limit)
-    const i18n = setting.i18n.find(item => item.value === user.i18n)
-    const theme = setting.theme.find(item => item.value === user.theme)
-
-    this.setData({
-      avatar: app.Store.userInfo.avatarUrl || '../../assets/logo.png',
-      name: app.Store.userInfo.nickName || '',
-      authorized: app.Store.userInfo.is_authorized,
-      listStyle,
-      defaultLimit,
-      i18n,
-      theme
-    })
   },
   // 更新用户设置信息
   updateUserInfo (data) {
@@ -76,6 +55,26 @@ Page({
           })
         }
       }
+    })
+  },
+  // 重绘用户信息
+  renderUserInfo () {
+    const user = app.Store.userInfo
+    const setting = app.Constant.setting
+
+    const listStyle = setting.list_style.find(item => item.value === user.list_style)
+    const defaultLimit = setting.default_limits.findIndex(item => item.value === user.default_limit)
+    const i18n = setting.i18n.find(item => item.value === user.i18n)
+    const theme = setting.theme.find(item => item.value === user.theme)
+
+    this.setData({
+      avatar: user.avatarUrl || '../../assets/logo.png',
+      name: user.nickName || '',
+      authorized: user.is_authorized,
+      listStyle,
+      defaultLimit,
+      i18n,
+      theme
     })
   }
 })

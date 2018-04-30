@@ -1,0 +1,19 @@
+page {
+  background: #efeff4;
+}
+.weui-cells {
+  margin-top: 0
+}
+.weui-cell .weui-cell__hd {
+  margin-right: 10px;
+  width: 24px;
+  height: 24px;
+  line-height: 24px;
+}
+.weui-cell .iconfont {
+  font-size: 24px;
+}
+
+.weui-loadmore__tips_in-line {
+  background-color: #efeff4;
+}

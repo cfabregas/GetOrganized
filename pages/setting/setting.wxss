@@ -9,9 +9,6 @@ page {
 .weui-media-box__title {
   font-size: 19px
 }
-.weui-cells {
-  margin-top: 15px
-}
 .weui-cell.no-padding {
   padding: 0
 }

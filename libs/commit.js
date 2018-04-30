@@ -58,8 +58,14 @@ function updateData (tableName, data) {
 
   for (let i in Store[tableName].list) {
     if (Store[tableName].list[i].id === data.id) {
-      Store[tableName].list.splice(i, 1, item)
-      Store[tableName].dict[data.id] = item
+      if (data.is_deleted) {
+        Store[tableName].list.splice(i, 1)
+        delete Store[tableName].dict[data.id]
+        Store[tableName].total--
+      } else {
+        Store[tableName].list.splice(i, 1, item)
+        Store[tableName].dict[data.id] = item
+      }
     }
   }
 

@@ -26,6 +26,7 @@ Page({
 
         wx.hideNavigationBarLoading()
         app.showModal(() => {
+          wx.showNavigationBarLoading()
           this.login()
         })
       }
@@ -38,20 +39,67 @@ Page({
       // showLoading: false,
       callback: {
         then: res => {
-          wx.hideNavigationBarLoading()
-          wx.switchTab({
-            url: this.data.url
-          })
+          this.getTask(id)
         },
         catch: err => {
           console.log(err)
 
           wx.hideNavigationBarLoading()
           app.showModal(() => {
+            wx.showNavigationBarLoading()
             this.getUserInfo(id)
           })
         }
       }
     })
+  },
+  getTask (id) {
+    app.request.findData({
+      tableName: 'task',
+      limit: 50,
+      replace: true,
+      query: {
+        type: 'and',
+        option: [{
+          method: 'compare',
+          params: ['user_id', '=', id] // 当前用户的任务
+        }, {
+          method: 'compare',
+          params: ['is_deleted', '=', false] // 未被删除的任务
+        }, {
+          method: 'compare',
+          params: ['stage', '<', 1] // 未完成的任务
+        }]
+      },
+      // showLoading: false,
+      loadingText: '正在同步...',
+      callback: {
+        then: res => {
+          this.redirect()
+        },
+        catch: err => {
+          console.log(err)
+          
+          wx.hideNavigationBarLoading()
+          app.showModal(() => {
+            wx.showNavigationBarLoading()
+            this.getTask(id)
+          })
+        }
+      }
+    })
+  },
+  redirect () {
+    wx.hideNavigationBarLoading()
+
+    if (this.data.url.split('/').length === 4) {
+      wx.redirectTo({
+        url: this.data.url
+      })
+    } else {
+      wx.switchTab({
+        url: this.data.url
+      })
+    }
   }
 })
