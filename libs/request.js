@@ -8,7 +8,7 @@ function findData ({
   query,
   replace = false,
   limit = 20,
-  orderBy = 'created_at', // 默认按创建时间排序
+  orderBy = '-created_at', // 默认按创建时间倒序
   showLoading = true,
   loadingText = '正在加载...',
   callback = {}
@@ -77,7 +77,7 @@ function getData ({ tableName, id, showLoading = true, loadingText = '正在加�
 }
 
 // 添加新的数据
-function addData ({ tableName, data, insert, showLoading = true, loadingText = '正在保存...', callback = {} }) {
+function addData ({ tableName, data, showLoading = true, loadingText = '正在保存...', callback = {} }) {
   showLoading && loading.show(loadingText)
 
   let table = new wx.BaaS.TableObject(tableName)
@@ -85,7 +85,7 @@ function addData ({ tableName, data, insert, showLoading = true, loadingText = '
 
   item.save().then(res => {
     console.log(`add ${tableName} response`, res)
-    commit.addData(tableName, res.data, insert)
+    commit.addData(tableName, res.data)
     loading.hide()
     callback.then(res.data)
   }, err => {

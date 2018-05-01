@@ -39,13 +39,8 @@ function findData (tableName, query = {}, replace, data) {
   console.log(`find ${tableName} committed`, Store[tableName])
 }
 
-function addData (tableName, item, insert) {
-  if (insert) {
-    Store[tableName].list.unshift(item)
-  } else {
-    Store[tableName].list.push(item)
-  }
-
+function addData (tableName, item) {
+  Store[tableName].list.unshift(item)
   Store[tableName].dict[item.id] = item
   Store[tableName].total++
 

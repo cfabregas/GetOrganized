@@ -1,3 +1,4 @@
+import { clone } from '../../utils/util'
 const app = getApp()
 
 Page({
@@ -23,7 +24,7 @@ Page({
     })
   },
   updateTaskList () {
-    const list = JSON.parse(JSON.stringify(app.Store.task.list))
+    const list = clone(app.Store.task.list)
     const show = list.filter(item => item.is_hidden === false)
     const style = app.Store.userInfo.list_style
 

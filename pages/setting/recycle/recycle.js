@@ -1,3 +1,4 @@
+import { clone } from '../../../utils/util'
 const app = getApp()
 
 Page({
@@ -52,7 +53,7 @@ Page({
     })
   },
   updateHiddenList () {
-    const list = JSON.parse(JSON.stringify(app.Store.task.list))
+    const list = clone(app.Store.task.list)
     const hidden = list.filter(item => item.is_hidden === true)
 
     this.setData({

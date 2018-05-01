@@ -1,4 +1,4 @@
-import { formatTime } from '../../../utils/util'
+import { clone, formatTime } from '../../../utils/util'
 const app = getApp()
 const taskOption = app.Constant.taskOption
 
@@ -33,31 +33,43 @@ Page({
       'newTask.name': e.detail.value.trim()
     })
   },
-  onCellTap (e) {
-    console.log(e)
-    let key = e.currentTarget.id
-
+  onTypeChange (e) {
     wx.showActionSheet({
-      itemList: taskOption[key].map(i => i.label),
+      itemList: taskOption.type.map(i => i.label),
       success: res => {
-        let item = taskOption[key][+(res.tapIndex)]
-
-        if (key === 'type') {
-          this.setData({
-            'newTask.type': item
-          })
-        } else {
-          this.setData({
-            'newTask.method': item
-          })
-        }          
+        this.setData({
+          'newTask.type': taskOption.type[+(res.tapIndex)]
+        })
       }
     })
   },
-  onPickerChange (e) {
-    console.log(e)
+  onMethodChange (e) {
+    wx.showActionSheet({
+      itemList: taskOption.method.map(i => i.label),
+      success: res => {
+        this.setData({
+          'newTask.method': taskOption.method[+(res.tapIndex)]
+        })
+      }
+    })
+  },
+  onDeadlineChange (e) {
+    this.setData({
+      'newTask.deadline': e.detail.value
+    })
+  },
+  onDefaultLimitChange (e) {
+    const index = +e.detail.value
+
+    this.setData({
+      defaultLimitIndex: index,
+      'newTask.default_limit': this.data.defaultLimits[index]
+    })
   },
   onCreate (e) {
-    console.log(e)
+    const newTask = clone(this.data.newTask)
+    newTask.type = newTask.type.value
+    newTask.method = newTask.method.value
+    console.log(newTask)
   }
 })

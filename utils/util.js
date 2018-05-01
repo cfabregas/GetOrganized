@@ -1,5 +1,5 @@
 // 深拷贝
-function clone () {
+function clone (val) {
   let type = Object.prototype.toString.call(val).slice(8, -1).toLowerCase()
 
   if (type === 'array') {
