@@ -1,7 +1,7 @@
-<view style="padding: 15px 0 76px 0">
+<view class="form {{showIconPicker && 'blur'}}">
   <view class="weui-cells">
     <!-- 图标 -->
-    <view class="weui-cell active" bind:tap="">
+    <view class="weui-cell active" bind:tap="onIconTap">
       <view class="weui-cell__bd">图标</view>
       <view class="weui-cell__ft weui-cell__ft_in-access">
         <view class="icon-container" style="background: {{newTask.icon_color}}">
@@ -57,3 +57,6 @@
 <view class="button">
   <button type="primary" disabled="{{!newTask.name}}" bind:tap="onCreate">创 建</button>
 </view>
+
+<!-- 图标选择组件 -->
+<icon-picker isShow="{{showIconPicker}}" bind:tap="onIconTap"></icon-picker>

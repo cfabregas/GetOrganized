@@ -26,7 +26,7 @@ Page({
   updateTaskList () {
     const list = clone(app.Store.task.list)
     const show = list.filter(item => item.is_hidden === false)
-    const style = app.Store.userInfo.list_style
+    const style = app.Store.userInfo.list_style || 'grid'
 
     if (style === 'list') {
       list.map(item => {

@@ -1,0 +1,38 @@
+.mask {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 1000;
+  background: rgba(0, 0, 0, .3);
+  transition: all .35s cubic-bezier(0.45, 1, 0.4, 1);
+}
+.mask.hide {
+  visibility: hidden;
+  background: transparent;
+}
+
+.icon-picker {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100%;
+  overflow: hidden;
+  transition: height .35s cubic-bezier(0.45, 1, 0.4, 1);
+}
+.hide .icon-picker {
+  height: 0
+}
+
+.icon {
+  height: 83px;
+  line-height: 83px;
+  text-align: center;
+}
+.pick-zone {
+  height: calc(100% - 83px);
+  background: #fff;
+  border-radius: 15px 15px 0 0;
+}

@@ -39,7 +39,7 @@ Page({
     app.request.updateData({
       tableName: 'task',
       data: data,
-      loadingText: data.is_deleted ? '正在删除' : '正在恢复',
+      loadingText: data.is_deleted ? '正在删除...' : '正在恢复...',
       callback: {
         then: res => {
           this.updateHiddenList()

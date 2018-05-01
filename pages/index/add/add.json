@@ -1,4 +1,7 @@
 {
   "navigationBarTitleText": "添加项目",
-  "backgroundColor": "#efeff4"
+  "backgroundColor": "#efeff4",
+  "usingComponents": {
+    "icon-picker": "../../../components/iconPicker/iconPicker"
+  }
 }

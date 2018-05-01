@@ -5,6 +5,7 @@ const taskOption = app.Constant.taskOption
 Page({
   data: {
     focus: false,
+    showIconPicker: false,
     iconList: taskOption.iconList,
     iconColorList: taskOption.iconColorList,
     defaultLimits: app.Constant.setting.default_limits,
@@ -20,8 +21,10 @@ Page({
       default_limit: taskOption.default_limits.find(item => item.value === 30)
     }
   },
-  onLoad (option) {
-    console.log(option)
+  onIconTap (e) {
+    this.setData({
+      showIconPicker: !this.data.showIconPicker
+    })
   },
   onInputFocus (e) {
     this.setData({
@@ -67,9 +70,54 @@ Page({
     })
   },
   onCreate (e) {
+    if (!this.validate()) { return }
+
     const newTask = clone(this.data.newTask)
+    newTask.user_id = app.Store.userInfo.id
     newTask.type = newTask.type.value
     newTask.method = newTask.method.value
-    console.log(newTask)
+    newTask.default_limit = newTask.default_limit.value
+
+    app.request.addData({
+      tableName: 'task',
+      data: newTask,
+      loadingText: '正在创建...',
+      callback: {
+        then: res => {
+          wx.showToast({
+            title: '创建成功',
+            icon: 'success',
+            duration: 800,
+            musk: true,
+            success: res => {
+              setTimeout(() => {
+                wx.navigateBack()
+              }, 800)
+            }
+          })
+        },
+        catch: err => {
+          app.showModal(() => {
+            this.onCreate(e)
+          })
+        }
+      }
+    })
+  },
+  validate () {
+    const isDaily = this.data.newTask.type.value === 'daily'
+    const deadline = new Date(this.data.newTask.deadline).getTime()
+    const now = Date.now()
+
+    if (!isDaily && deadline <= now) {
+      wx.showModal({
+        title: '提示',
+        content: '完成期限不能早于今天',
+        showCancel: false
+      })
+      return false
+    } else {
+      return true
+    }
   }
 })
