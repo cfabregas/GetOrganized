@@ -1,6 +1,8 @@
 <view class="mask {{!isShow && 'hide'}}">
   <view class="icon-picker">
-    <view class="icon">6666666</view>
+    <view class="icon" style="background: {{iconColor}}">
+      <text class="iconfont icon-{{icon}}"></text>
+    </view>
     <scroll-view class="pick-zone" scroll-y>
       6666
     </scroll-view>

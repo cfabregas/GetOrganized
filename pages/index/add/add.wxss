@@ -3,16 +3,16 @@ page {
 }
 .form {
   padding: 15px 0 76px 0;
-  will-change: filter;
-  transition: filter 0.35s cubic-bezier(0.45, 1, 0.4, 1)
+  transition: all 0.35s cubic-bezier(0.45, 1, 0.4, 1)
 }
 .form.blur {
   filter: blur(10px);
+  transform: scale(.95);
 }
 .weui-cells:first-child {
   margin-top: 0
 }
-.weui-cell__ft .icon-container {
+.weui-cell__ft .icon {
   width: 48px;
   height: 48px;
   text-align: center;

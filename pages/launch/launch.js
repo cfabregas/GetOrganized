@@ -56,7 +56,7 @@ Page({
   getTask (id) {
     app.request.findData({
       tableName: 'task',
-      limit: 50,
+      limit: app.Constant.taskMax,
       replace: true,
       query: {
         type: 'and',

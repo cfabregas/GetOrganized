@@ -4,7 +4,7 @@
     <view class="weui-cell active" bind:tap="onIconTap">
       <view class="weui-cell__bd">图标</view>
       <view class="weui-cell__ft weui-cell__ft_in-access">
-        <view class="icon-container" style="background: {{newTask.icon_color}}">
+        <view class="icon" style="background: {{newTask.icon_color}}">
           <text class="iconfont icon-{{newTask.icon}}"></text>
         </view>
       </view>
@@ -59,4 +59,4 @@
 </view>
 
 <!-- 图标选择组件 -->
-<icon-picker isShow="{{showIconPicker}}" bind:tap="onIconTap"></icon-picker>
+<icon-picker isShow="{{showIconPicker}}" icon="{{newTask.icon}}" iconColor="{{newTask.icon_color}}" bind:tap="onIconTap"></icon-picker>

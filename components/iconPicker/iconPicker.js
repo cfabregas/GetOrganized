@@ -5,7 +5,9 @@ Component({
     isShow: {
       type: Boolean,
       value: false,
-    }
+    },
+    icon: String,
+    iconColor: String
   },
   data: {
 
