@@ -3,7 +3,7 @@ page {
 }
 .form {
   padding: 15px 0 76px 0;
-  transition: all 0.35s cubic-bezier(0.45, 1, 0.4, 1)
+  transition: all .35s cubic-bezier(0.45, 1, 0.4, 1)
 }
 .form.blur {
   filter: blur(10px);

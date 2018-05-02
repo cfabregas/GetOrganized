@@ -109,7 +109,14 @@ Page({
     const deadline = new Date(this.data.newTask.deadline).getTime()
     const now = Date.now()
 
-    if (!isDaily && deadline <= now) {
+    if (!this.data.newTask.name) {
+      wx.showModal({
+        title: '提示',
+        content: '项目名称不能为空',
+        showCancel: false
+      })
+      return false
+    } else if (!isDaily && deadline <= now) {
       wx.showModal({
         title: '提示',
         content: '完成期限不能早于今天',
