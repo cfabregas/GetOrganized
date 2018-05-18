@@ -1,10 +1,15 @@
 <view class="mask {{!isShow && 'hide'}}">
-  <view class="icon-picker">
-    <view class="icon" style="background: {{iconColor}}">
+  <view class="main">
+
+    <view class="result-icon" style="background: {{iconColor}}">
       <text class="iconfont icon-{{icon}}"></text>
     </view>
-    <scroll-view class="pick-zone" scroll-y>
-      6666
-    </scroll-view>
+
+    <view class="pick-zone">
+      <scroll-view class="picker">123</scroll-view>
+      <scroll-view class="picker">456</scroll-view>
+    </view>
+
+    <icon class="close-btn" type="cancel" size="40" color="#fff" bind:tap="onClose"></icon>
   </view>
 </view>

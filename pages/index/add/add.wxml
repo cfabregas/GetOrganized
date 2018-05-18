@@ -1,62 +1,64 @@
-<view class="form {{showIconPicker && 'blur'}}">
-  <view class="weui-cells">
-    <!-- 图标 -->
-    <view class="weui-cell active" bind:tap="onIconTap">
-      <view class="weui-cell__bd">图标</view>
-      <view class="weui-cell__ft weui-cell__ft_in-access">
-        <view class="icon" style="background: {{newTask.icon_color}}">
-          <text class="iconfont icon-{{newTask.icon}}"></text>
+<view class="container {{showIconPicker && 'blur'}}">
+  <view class="form">
+    <view class="weui-cells">
+      <!-- 图标 -->
+      <view class="weui-cell active" bind:tap="toggleIconPicker">
+        <view class="weui-cell__bd">图标</view>
+        <view class="weui-cell__ft weui-cell__ft_in-access">
+          <view class="icon" style="background: {{newTask.icon_color}}">
+            <text class="iconfont icon-{{newTask.icon}}"></text>
+          </view>
+        </view>
+      </view>
+      <!-- 名称 -->
+      <view class="weui-cell active" bind:tap="onInputFocus">
+        <view class="weui-cell__bd">名称</view>
+        <view class="weui-cell__ft weui-cell__ft_in-access">
+          <input value="{{newTask.name}}" id="name" maxlength="{{10}}" focus="{{focus}}" bind:blur="onInputBlur"></input>
         </view>
       </view>
     </view>
-    <!-- 名称 -->
-    <view class="weui-cell active" bind:tap="onInputFocus">
-      <view class="weui-cell__bd">名称</view>
-      <view class="weui-cell__ft weui-cell__ft_in-access">
-        <input value="{{newTask.name}}" id="name" maxlength="{{10}}" focus="{{focus}}" bind:blur="onInputBlur"></input>
+
+    <view class="weui-cells">
+      <!-- 类型 -->
+      <view class="weui-cell active" id="type" bind:tap="onTypeChange">
+        <view class="weui-cell__bd">类型</view>
+        <view class="weui-cell__ft weui-cell__ft_in-access">{{newTask.type.label}}</view>
+      </view>
+      <!-- deadline -->
+      <view wx:if="{{newTask.type.value === 'temp'}}" class="weui-cell active picker-inside">
+        <picker id="deadline" mode="date" value="{{deadline}}" bind:change="onDeadlineChange">
+          <view class="weui-cell active" id="deadline">
+            <view class="weui-cell__bd">完成期限</view>
+            <view class="weui-cell__ft weui-cell__ft_in-access">{{newTask.deadline}}</view>
+          </view>
+        </picker>
+      </view>
+    </view>
+
+    <view class="weui-cells">
+      <!-- 模式 -->
+      <view class="weui-cell active" id="method" bind:tap="onMethodChange">
+        <view class="weui-cell__bd">模式</view>
+        <view class="weui-cell__ft weui-cell__ft_in-access">{{newTask.method.label}}</view>
+      </view>
+      <!-- 默认时长 -->
+      <view wx:if="{{newTask.method.value === 'timer'}}" class="weui-cell active picker-inside">
+        <picker id="default_limit" bind:change="onDefaultLimitChange" value="{{defaultLimitIndex}}" range="{{defaultLimits}}" range-key="label">
+          <view class="weui-cell active" id="default_limit">
+            <view class="weui-cell__bd">默认时长</view>
+            <view class="weui-cell__ft weui-cell__ft_in-access">{{newTask.default_limit.label}}</view>
+          </view>
+        </picker>
       </view>
     </view>
   </view>
 
-  <view class="weui-cells">
-    <!-- 类型 -->
-    <view class="weui-cell active" id="type" bind:tap="onTypeChange">
-      <view class="weui-cell__bd">类型</view>
-      <view class="weui-cell__ft weui-cell__ft_in-access">{{newTask.type.label}}</view>
-    </view>
-    <!-- deadline -->
-    <view wx:if="{{newTask.type.value === 'temp'}}" class="weui-cell active picker-inside">
-      <picker id="deadline" mode="date" value="{{deadline}}" bind:change="onDeadlineChange">
-        <view class="weui-cell active" id="deadline">
-          <view class="weui-cell__bd">完成期限</view>
-          <view class="weui-cell__ft weui-cell__ft_in-access">{{newTask.deadline}}</view>
-        </view>
-      </picker>
-    </view>
+  <!-- 创建按钮 -->
+  <view class="button">
+    <button type="primary" disabled="{{!newTask.name}}" bind:tap="onCreate">创 建</button>
   </view>
-
-  <view class="weui-cells">
-    <!-- 模式 -->
-    <view class="weui-cell active" id="method" bind:tap="onMethodChange">
-      <view class="weui-cell__bd">模式</view>
-      <view class="weui-cell__ft weui-cell__ft_in-access">{{newTask.method.label}}</view>
-    </view>
-    <!-- 默认时长 -->
-    <view wx:if="{{newTask.method.value === 'timer'}}" class="weui-cell active picker-inside">
-      <picker id="default_limit" bind:change="onDefaultLimitChange" value="{{defaultLimitIndex}}" range="{{defaultLimits}}" range-key="label">
-        <view class="weui-cell active" id="default_limit">
-          <view class="weui-cell__bd">默认时长</view>
-          <view class="weui-cell__ft weui-cell__ft_in-access">{{newTask.default_limit.label}}</view>
-        </view>
-      </picker>
-    </view>
-  </view>
-</view>
-
-<!-- 创建按钮 -->
-<view class="button">
-  <button type="primary" disabled="{{!newTask.name}}" bind:tap="onCreate">创 建</button>
 </view>
 
 <!-- 图标选择组件 -->
-<icon-picker isShow="{{showIconPicker}}" icon="{{newTask.icon}}" iconColor="{{newTask.icon_color}}" bind:tap="onIconTap"></icon-picker>
+<icon-picker isShow="{{showIconPicker}}" icon="{{newTask.icon}}" iconColor="{{newTask.icon_color}}" bind:close="toggleIconPicker"></icon-picker>

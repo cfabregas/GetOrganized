@@ -1,13 +1,17 @@
 page {
   background: #efeff4;
 }
-.form {
-  padding: 15px 0 76px 0;
-  transition: all .35s cubic-bezier(0.45, 1, 0.4, 1)
+.container {
+  height: 100%;
+  will-change: filter, transform;
+  transition: filter .35s cubic-bezier(0.45, 1, 0.4, 1), transform .35s cubic-bezier(0.45, 1, 0.4, 1)
 }
-.form.blur {
+.container.blur {
   filter: blur(10px);
   transform: scale(.95);
+}
+.form {
+  padding: 15px 0 76px 0
 }
 .weui-cells:first-child {
   margin-top: 0

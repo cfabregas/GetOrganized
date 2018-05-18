@@ -21,7 +21,7 @@ Page({
       default_limit: taskOption.default_limits.find(item => item.value === 30)
     }
   },
-  onIconTap (e) {
+  toggleIconPicker (e) {
     this.setData({
       showIconPicker: !this.data.showIconPicker
     })

@@ -11,5 +11,10 @@ Component({
   },
   data: {
 
+  },
+  methods: {
+    onClose () {
+      this.triggerEvent('close')
+    }
   }
 })
