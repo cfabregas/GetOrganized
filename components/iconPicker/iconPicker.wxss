@@ -27,7 +27,6 @@
   padding: 15px;
   display: flex;
   flex-direction: column;
-  align-items: center;
   transform: translateY(0);
   will-change: transform;
   transition: transform .35s cubic-bezier(0.45, 1, 0.4, 1);
@@ -55,6 +54,10 @@
 .pick-zone .picker {
 }
 
+.close-btn {
+  width: 100%;
+  text-align: center;
+}
 .close-btn:active {
   opacity: .6
 }

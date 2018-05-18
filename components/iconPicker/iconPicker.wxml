@@ -10,6 +10,8 @@
       <scroll-view class="picker">456</scroll-view>
     </view>
 
-    <icon class="close-btn" type="cancel" size="40" color="#fff" bind:tap="onClose"></icon>
+    <view class="close-btn" bind:tap="onClose">
+      <icon type="cancel" size="40" color="#fff"></icon>
+    </view>
   </view>
 </view>
