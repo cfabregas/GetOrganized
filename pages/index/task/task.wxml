@@ -2,7 +2,7 @@
   <swiper-item class="first">
     <view class="clock">
       <text class="timer">{{timer.label}}</text>
-      <text class="default-limit">计划：{{task.default_limit}}分钟</text>
+      <text class="default-limit">计划：{{task.default_limit || 30}}分钟</text>
     </view>
     <view class="btn-group">
       <view class="btn" wx:if="{{timer.status === 'vacant'}}" bind:tap="startTimer">开 始</view>
