@@ -61,4 +61,4 @@
 </view>
 
 <!-- 图标选择组件 -->
-<icon-picker isShow="{{showIconPicker}}" icon="{{newTask.icon}}" iconColor="{{newTask.icon_color}}" bind:close="toggleIconPicker"></icon-picker>
+<icon-picker isShow="{{showIconPicker}}" icon="{{newTask.icon}}" iconColor="{{newTask.icon_color}}" bind:close="toggleIconPicker" bind:iconChange="onIconChange" bind: iconColorChange="onIconColorChange"></icon-picker>

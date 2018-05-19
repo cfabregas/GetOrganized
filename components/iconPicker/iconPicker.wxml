@@ -6,8 +6,13 @@
     </view>
 
     <view class="pick-zone">
-      <scroll-view class="picker">123</scroll-view>
-      <scroll-view class="picker">456</scroll-view>
+      <!-- icon选择器 -->
+      <swiper display-multiple-items="{{3}}" previous-margin="100rpx" next-margin="100rpx" current="{{currentIcon}}" duration="{{250}}" bind:change="onIconChange" class="picker">
+        <swiper-item wx:for="{{iconList}}" wx:key="{{item}}" class="picker-item">
+          <text class="iconfont icon-{{item}}"></text>
+        </swiper-item>
+      </swiper>
+      <!-- 颜色选择器 -->
     </view>
 
     <view class="close-btn" bind:tap="onClose">

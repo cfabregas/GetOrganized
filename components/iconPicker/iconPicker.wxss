@@ -34,14 +34,13 @@
 
 .result-icon {
   width: 100%;
-  height: 80px;
   text-align: center;
-  line-height: 80px;
   border-radius: 12px 12px 0 0;
 }
 .result-icon .iconfont {
   color: #fff;
   font-size: 48px;
+  padding: 15px;
 }
 
 .pick-zone {
@@ -50,10 +49,21 @@
   background: #fff;
   margin-bottom: 15px;
   border-radius: 0 0 12px 12px;
+  display: flex;
+  flex-direction: column;
 }
 .pick-zone .picker {
+  flex: auto;
+  border: 1rpx solid #f00;
 }
-
+.pick-zone .picker-item {
+  text-align: center;
+}
+.picker-item .iconfont {
+  color: #888;
+  font-size: 48px;
+  padding: 15px
+}
 .close-btn {
   width: 100%;
   text-align: center;

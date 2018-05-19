@@ -5,9 +5,7 @@ const taskOption = app.Constant.taskOption
 Page({
   data: {
     focus: false,
-    showIconPicker: false,
-    iconList: taskOption.iconList,
-    iconColorList: taskOption.iconColorList,
+    showIconPicker: true,
     defaultLimits: app.Constant.setting.default_limits,
     defaultLimitIndex: taskOption.default_limits.findIndex(item => item.value === 30),
 
@@ -24,6 +22,16 @@ Page({
   toggleIconPicker (e) {
     this.setData({
       showIconPicker: !this.data.showIconPicker
+    })
+  },
+  onIconChange (e) {
+    this.setData({
+      'newTask.icon': e.detail.icon
+    })
+  },
+  onIconColorChange (e) {
+    this.setData({
+      'newTask.icon_color': e.detail.iconColor
     })
   },
   onInputFocus (e) {

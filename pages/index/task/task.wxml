@@ -1,4 +1,4 @@
-<swiper indicator-dots="{{true}}" indicator-color="rgba(255,255,255,.3)" indicator-active-color="rgba(255,255,255,.7)" class="container">
+<swiper indicator-dots="{{true}}" indicator-color="rgba(255,255,255,.3)" indicator-active-color="rgba(255,255,255,.7)" duration="{{250}}" class="container">
   <swiper-item class="first">
     <view class="clock"></view>
   </swiper-item>
