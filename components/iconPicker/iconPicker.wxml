@@ -7,7 +7,7 @@
 
     <view class="pick-zone">
       <!-- icon选择器 -->
-      <text class="title">选取图标</text>
+      <text class="title">选取图标（{{iconIndex}}/{{iconList.length}}）</text>
       <swiper previous-margin="180rpx" next-margin="180rpx" current-item-id="{{icon}}" duration="{{150}}" bind:change="onIconChange" class="picker">
         <swiper-item wx:for="{{iconList}}" wx:key="{{item}}" item-id="{{item}}" class="picker-item {{(item === icon) && 'scale'}}">
           <text class="iconfont icon-{{item}}"></text>
@@ -15,7 +15,7 @@
       </swiper>
 
       <!-- 颜色选择器 -->
-      <text class="title">选取颜色</text>
+      <text class="title">选取颜色（{{iconColorIndex}}/{{iconColorList.length}}）</text>
       <swiper previous-margin="100rpx" next-margin="100rpx" current-item-id="{{iconColor}}" duration="{{150}}" bind:change="onIconColorChange" class="picker">
         <swiper-item wx:for="{{iconColorList}}" wx:key="{{item}}" item-id="{{item}}" class="picker-item {{(item === iconColor) && 'scale'}}">
           <view class="color-block" style="background: {{item}}"></view>
@@ -24,7 +24,7 @@
     </view>
 
     <view class="close-btn" bind:tap="onClose">
-      <icon type="cancel" size="40" color="#fff"></icon>
+      <icon type="success_no_circle" size="40" color="#fff"></icon>
     </view>
   </view>
 </view>

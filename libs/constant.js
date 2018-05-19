@@ -8,7 +8,7 @@ function __getLimits () {
       label: i + ' 分钟'
     })
   }
-  
+
   return limits
 }
 
@@ -25,7 +25,7 @@ function __getColors () {
     }
   }
 
-  return colors
+  return colors.slice(0, -1) /* 删除白色 */
 }
 
 // 最大任务数量(不包括已删除的)

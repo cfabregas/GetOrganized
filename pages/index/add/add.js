@@ -5,14 +5,15 @@ const taskOption = app.Constant.taskOption
 Page({
   data: {
     focus: false,
-    showIconPicker: true,
+    showIconPicker: false,
     defaultLimits: app.Constant.setting.default_limits,
     defaultLimitIndex: taskOption.default_limits.findIndex(item => item.value === 30),
 
     newTask: {
       name: '',
+      // 这两行以后应该放到iconPicker里面去，作为一个随机生成方法
       icon: taskOption.iconList[parseInt(Math.random() * taskOption.iconList.length)],
-      icon_color: taskOption.iconColorList[parseInt(Math.random() * (taskOption.iconColorList.length - 1))], // 最后一个颜色为fff
+      icon_color: taskOption.iconColorList[parseInt(Math.random() * taskOption.iconColorList.length)],
       type: taskOption.type[0],
       method: taskOption.method[0],
       deadline: formatTime({ type: 'date' }),
