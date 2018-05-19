@@ -1,6 +1,17 @@
 <swiper indicator-dots="{{true}}" indicator-color="rgba(255,255,255,.3)" indicator-active-color="rgba(255,255,255,.7)" duration="{{250}}" class="container">
   <swiper-item class="first">
-    <view class="clock"></view>
+    <view class="clock">
+      <text class="timer">{{timer.label}}</text>
+      <text class="default-limit">计划：{{task.default_limit}}分钟</text>
+    </view>
+    <view class="btn-group">
+      <view class="btn" wx:if="{{timer.status === 'vacant'}}" bind:tap="startTimer">开 始</view>
+      <view class="btn" wx:elif="{{timer.status === 'running'}}" bind:tap="pauseTimer">暂 停</view>
+      <block wx:elif="{{timer.status === 'paused'}}">
+        <view class="btn" bind:tap="startTimer">继 续</view>
+        <view class="btn white" bind:tap="finishTimer">结 束</view>
+      </block>
+    </view>
   </swiper-item>
   <swiper-item>
     second

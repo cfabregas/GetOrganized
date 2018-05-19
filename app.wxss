@@ -10,7 +10,7 @@ page {
   height: 100%;
   color: #353535;
 }
-page, view, scroll-view {
+page, view, scroll-view, swiper-item {
   box-sizing: border-box;
 }
 .active:active {

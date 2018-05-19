@@ -14,11 +14,11 @@ Page({
     const taskId = e.currentTarget.id
 
     wx.showActionSheet({
-      itemList: recovery ? ['恢复'] : ['彻底删除'],
+      itemList: recovery ? ['恢复任务'] : ['彻底删除'],
       itemColor: recovery ? '#000' : '#e64340',
       success: res => {
         if (recovery) {
-          this.updateTask({ id: taskId, is_hidden: false })  
+          this.updateTask({ id: taskId, is_hidden: false })
         } else {
           const task = app.Store.task.dict[taskId]
 

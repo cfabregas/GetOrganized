@@ -3,3 +3,53 @@
   color: #fff;
   background: linear-gradient(#EA412C, #E66D54);
 }
+/* 计时模块 */
+.first {
+  padding-bottom: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+.clock {
+  width: 500rpx;
+  height: 500rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 4rpx solid rgba(255, 255, 255, .3);
+}
+.clock .timer {
+  font-size: 60px;
+  font-weight: 200;
+  line-height: 1.2
+}
+.clock .default-limit {
+  font-weight: 200
+}
+.btn-group {
+  width: 500rpx;
+  display: flex;
+  justify-content: space-around;
+}
+.btn-group .btn {
+  width: 200rpx;
+  line-height: 44px;
+  text-align: center;
+  background: transparent;
+  border: 1rpx solid #fff;
+  border-radius: 24px;
+  color: #fff
+}
+.btn-group .btn:active {
+  background: rgba(255, 255, 255, .15);
+}
+.btn-group .btn.white {
+  background: #fff;
+  color: #EA412C;
+}
+.btn-group .btn.white:active {
+  background: rgba(255, 255, 255, .85);
+}

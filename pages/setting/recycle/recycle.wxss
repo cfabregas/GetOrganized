@@ -1,6 +1,10 @@
 page {
   background: #efeff4;
 }
+.container {
+  padding-top: 15px;
+  overflow-y: auto;
+}
 .weui-cells {
   margin-top: 0
 }
@@ -16,4 +20,9 @@ page {
 
 .weui-loadmore__tips_in-line {
   background-color: #efeff4;
+}
+.tips {
+  color: #888;
+  font-size: 14px;
+  padding: 10px 15px
 }

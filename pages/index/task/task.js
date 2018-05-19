@@ -1,11 +1,17 @@
 const app = getApp()
+let interval = null
 
 Page({
   data: {
-    task: {}
+    task: {},
+    timer: {
+      status: 'vacant', // 状态：vacant/running/paused/finished
+      value: 0,
+      label: '00:00'
+    }
   },
   onLoad (option) {
-    const task = app.Store.task.dict[option.id]
+    const task = app.Store.task.dict[option.id] || app.Store.task.list[0]
     this.setData({
       task: task
     })
@@ -15,6 +21,33 @@ Page({
     wx.setNavigationBarTitle({
       title: this.data.task.name
     })
+  },
+  startTimer () {
+    this.setData({
+      'timer.status': 'running'
+    }, () => {
+      interval = setInterval(() => {
+        let time = this.data.timer.value + 1
+        let min = Math.floor(time / 60)
+        let sec = time % 60
+
+        this.setData({
+          'timer.value': time,
+          'timer.label': `${min >= 10 ? min : '0' + min}:${sec >= 10 ? sec : '0' + sec}`
+        })
+      }, 1000)
+    })
+  },
+  pauseTimer () {
+    this.setData({
+      'timer.status': 'paused'
+    }, () => {
+      clearInterval(interval)
+    })
+  },
+  finishTimer () {
+    this.pauseTimer()
+    // 提交记录，成功后清空计时器
   },
   // 提交本次打卡
   addLog () {

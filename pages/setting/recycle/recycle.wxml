@@ -1,4 +1,4 @@
-<view wx:if="{{!!hiddenList.length}}" style="padding-top: 15px">
+<view wx:if="{{!!hiddenList.length}}" class="container">
   <view class="weui-cells">
     <view class="weui-cell active" wx:for="{{hiddenList}}" wx:key="{{item.id}}" id="{{item.id}}" bind:tap="onCellTap" bind:longpress="onCellTap">
       <view class="weui-cell__hd">
@@ -8,8 +8,9 @@
       <view class="weui-cell__ft weui-cell__ft_in-access"></view>
     </view>
   </view>
+  <view class="tips">Tips: 轻触选择“恢复任务”，或长按以“彻底删除”</view>
 </view>
-  
+
 <view wx:else>
   <view class="weui-loadmore weui-loadmore_line">
     <view class="weui-loadmore__tips weui-loadmore__tips_in-line">回收站是空的</view>

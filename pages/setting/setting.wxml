@@ -26,14 +26,15 @@
       <view class="weui-cell__bd">首页风格</view>
       <view class="weui-cell__ft weui-cell__ft_in-access">{{listStyle}}</view>
     </view>
-    <view class="weui-cell active picker-inside">
+    <!-- 这项设置暂时没有意义，先隐藏 -->
+    <!-- <view class="weui-cell active picker-inside">
       <picker id="default_limit" bind:change="onPickerChange" value="{{defaultLimitIndex}}" range="{{defaultLimits}}" range-key="label">
         <view class="weui-cell">
           <view class="weui-cell__bd">默认时长</view>
           <view class="weui-cell__ft weui-cell__ft_in-access">{{defaultLimit}}</view>
         </view>
       </picker>
-    </view>
+    </view> -->
     <view class="weui-cell active" id="theme" bind:tap="onCellTap">
       <view class="weui-cell__bd">主题</view>
       <view class="weui-cell__ft weui-cell__ft_in-access">{{theme}}</view>
