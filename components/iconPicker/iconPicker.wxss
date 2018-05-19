@@ -25,8 +25,6 @@
   right: 0;
   bottom: 0;
   padding: 15px;
-  display: flex;
-  flex-direction: column;
   transform: translateY(0);
   will-change: transform;
   transition: transform .35s cubic-bezier(0.45, 1, 0.4, 1);
@@ -44,25 +42,41 @@
 }
 
 .pick-zone {
-  flex: auto;
   width: 100%;
+  height: calc(100% - 55px - 76px);
   background: #fff;
   margin-bottom: 15px;
   border-radius: 0 0 12px 12px;
+}
+.pick-zone .title {
+  color: #888;
+  line-height: 44px;
+  padding: 0 15px
+}
+.picker {
+  height: calc(50% - 50px); /* swiper的高度要写死，所以这里不使用flex布局 */
+}
+.picker .picker-item {
   display: flex;
-  flex-direction: column;
-}
-.pick-zone .picker {
-  flex: auto;
-  border: 1rpx solid #f00;
-}
-.pick-zone .picker-item {
-  text-align: center;
+  justify-content: center;
+  align-items: center;
 }
 .picker-item .iconfont {
   color: #888;
   font-size: 48px;
-  padding: 15px
+  transition: transform .15s ease
+}
+.picker-item.scale .iconfont {
+  transform: scale(1.8);
+}
+.picker-item .color-block {
+  height: 80%;
+  width: 80%;
+  border-radius: 12px;
+  transition: transform .15s ease
+}
+.picker-item.scale .color-block {
+  transform: scale(1.2);
 }
 .close-btn {
   width: 100%;

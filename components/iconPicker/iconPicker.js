@@ -13,15 +13,6 @@ Component({
   data: {
     iconList: iconList,
     iconColorList: iconColorList,
-
-    currentIcon: 0,
-    currentIconColor: 0
-  },
-  ready () {
-    this.setData({
-      currentIcon: iconList.indexOf(this.properties.icon),
-      currentIconColor: iconColorList.indexOf(this.properties.iconColor)
-    })
   },
   methods: {
     onClose () {
@@ -30,7 +21,14 @@ Component({
     onIconChange (e) {
       if (e.detail.source === 'touch') {
         this.triggerEvent('iconChange', {
-          icon: iconList[e.detail.current]
+          icon: e.detail.currentItemId
+        })
+      }
+    },
+    onIconColorChange (e) {
+      if (e.detail.source === 'touch') {
+        this.triggerEvent('iconColorChange', {
+          iconColor: e.detail.currentItemId
         })
       }
     }
